@@ -1,5 +1,7 @@
 package br.ufrn.movimentum.adapters;
 
+import android.media.Image;
+
 /**
  * Created by Barreto on 22/11/2017.
  */
@@ -7,52 +9,66 @@ package br.ufrn.movimentum.adapters;
 public class ItemList{
 
     private int id;
-    private String nomeExercicio;
-    private String quantidade_realizada;
-    private String quantidade_total;
-    private String pontuacao;
+    private String groupName;
+    private String groupLocal;
+    private String groupSchedule;
+    private String groupTime;
+    private String groupPicturePath;
 
-    public ItemList(int id, String nomeExercicio, String quantidade_realizada, String quantidade_total, String pontuacao){
+    public ItemList(int id, String groupName, String groupLocal, String groupSchedule, String groupTime, String groupPicturePath){
         this.id = id;
-        this.nomeExercicio = nomeExercicio;
-        this.quantidade_realizada = quantidade_realizada;
-        this.quantidade_total = quantidade_total;
-        this.pontuacao = pontuacao;
+        this.groupName = groupName;
+        this.groupLocal = groupLocal;
+        this.groupSchedule = groupSchedule;
+        this.groupTime = groupTime;
+        this.groupPicturePath = groupPicturePath;
     }
 
     public int getId() {
         return id;
     }
 
-    public String getNomeExercicio() {
-        return nomeExercicio;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setNomeExercicio(String nomeExercicio) {
-        this.nomeExercicio = nomeExercicio;
+    public String getGroupName() {
+        return groupName;
     }
 
-    public String getQuantidade_realizada() {
-        return quantidade_realizada;
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
     }
 
-    public void setQuantidade_realizada(String quantidade_realizada) {
-        this.quantidade_realizada = quantidade_realizada;
+    public String getGroupLocal() {
+        return groupLocal;
     }
 
-    public String getQuantidade_total() {
-        return quantidade_total;
+    public void setGroupLocal(String groupLocal) {
+        this.groupLocal = groupLocal;
     }
 
-    public void setQuantidade_total(String quantidade_total) {
-        this.quantidade_total = quantidade_total;
+    public String getGroupSchedule() {
+        return groupSchedule;
     }
 
-    public String getPontuacao() {
-        return pontuacao;
+    public void setGroupSchedule(String groupSchedule) {
+        this.groupSchedule = groupSchedule;
     }
 
-    public void setPontuacao(String pontuacao) {
-        this.pontuacao = pontuacao;
+    public String getGroupTime() {
+        return groupTime;
+    }
+
+    public void setGroupTime(String groupTime) {
+        this.groupTime = groupTime;
+    }
+
+    public String getGroupPicturePath() {
+        return groupPicturePath;
+    }
+
+    public void setGroupPicture(String groupPicturePath) {
+        this.groupPicturePath = groupPicturePath;
     }
 }

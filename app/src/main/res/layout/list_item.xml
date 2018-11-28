@@ -1,36 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="100dp"
     android:orientation="horizontal">
 
+        <ImageView
+            android:scaleType="centerCrop"
+            android:id="@+id/iv_group_img"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
 
-        <TextView
+            android:layout_weight=".40"
+            android:src="@drawable/run_group"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_weight=".60"
-            android:text="pessoa"
-            android:id="@+id/exercicio_nome"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:padding="10dp"
-            />
+            android:maxHeight="30dp"
+            android:orientation="vertical"
+            android:padding="10dp">
 
-        <TextView
-            android:layout_weight=".20"
-            android:text="casa"
-            android:id="@+id/exercicio_qtd"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:padding="10dp"/>
+                <TextView
+                    android:id="@+id/tv_group_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_free_run"
+                    android:textStyle="bold"
+                    android:textSize="20dp" />
 
-        <TextView
-            android:layout_weight=".20"
-            android:textColor="#ffbd5b"
-            android:id="@+id/exercicio_pts"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:padding="10dp"/>
+                <TextView
+                    android:id="@+id/tv_group_local"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_local_model"
+                    android:textSize="16dp" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_weight=".50"
+                            android:id="@+id/tv_group_schedule"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="left"
+                            android:text="@string/tv_days_model"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="16dp" />
+
+                        <TextView
+                            android:layout_weight=".50"
+                            android:id="@+id/tv_group_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:text="@string/tv_time_model"
+                            android:textColor="#ffbd5b"
+                            android:textSize="16dp" />
+
+                </LinearLayout>
+        </LinearLayout>
 </LinearLayout>

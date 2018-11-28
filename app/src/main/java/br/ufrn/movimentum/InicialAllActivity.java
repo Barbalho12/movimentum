@@ -114,12 +114,16 @@ public class InicialAllActivity extends AppCompatActivity implements NavigationV
         }
 //
         List<ItemList> list_itens = new ArrayList<>();
-        list_itens.add(new ItemList(1,"Tutorial", points,"10","02pts"));
-        list_itens.add(new ItemList(2,"Exercício Inicial","0","10","09pts"));
-        list_itens.add(new ItemList(3,"Kanjis Iniciais 1","0","22","18pts"));
-        list_itens.add(new ItemList(4,"Kanjis iniciais 2","0","35","22pts"));
-        list_itens.add(new ItemList(5,"Kanjis Intermediários","0","28","46pts"));
-        list_itens.add(new ItemList(6,"Kanjis Difíceis","0","24","62pts"));
+        String pathName = "android.resource://"+getPackageName()+"/"+R.drawable.run_group;
+        Log.i("TESTE", "MyClass.getView() — get item number " + pathName );
+
+
+        list_itens.add(new ItemList(1, "Corrida Livre", "UFRN", "qui,sex", "18h00-19h00", pathName));
+//        list_itens.add(new ItemList(2,"Exercício Inicial","0","10","09pts"));
+//        list_itens.add(new ItemList(3,"Kanjis Iniciais 1","0","22","18pts"));
+//        list_itens.add(new ItemList(4,"Kanjis iniciais 2","0","35","22pts"));
+//        list_itens.add(new ItemList(5,"Kanjis Intermediários","0","28","46pts"));
+//        list_itens.add(new ItemList(6,"Kanjis Difíceis","0","24","62pts"));
 
         ExercicioAdapter exercicioAdapter = new ExercicioAdapter(list_itens, this);
 //
@@ -258,11 +262,11 @@ public class InicialAllActivity extends AppCompatActivity implements NavigationV
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "TODOS";
+                    return "Início";
                 case 1:
-                    return "INICIADOS";
+                    return "Comunidade";
                 case 2:
-                    return "FINALIZADOS";
+                    return "Notícias";
             }
             return null;
         }

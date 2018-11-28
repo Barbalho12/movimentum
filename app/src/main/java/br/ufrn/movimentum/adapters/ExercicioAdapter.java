@@ -1,9 +1,11 @@
 package br.ufrn.movimentum.adapters;
 
 import android.app.Activity;
+import android.net.Uri;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -46,15 +48,18 @@ public class ExercicioAdapter extends BaseAdapter {
         View view = activity.getLayoutInflater().inflate(R.layout.list_item, parent, false);
         ItemList item_list = list_itens.get(position);
 //
-        TextView nome = (TextView) view.findViewById(R.id.exercicio_nome);
-        TextView pts = (TextView) view.findViewById(R.id.exercicio_pts);
-        TextView qtd = (TextView) view.findViewById(R.id.exercicio_qtd);
+        TextView groupName = (TextView) view.findViewById(R.id.tv_group_name);
+        TextView groupLocal = (TextView) view.findViewById(R.id.tv_group_local);
+        TextView groupSchedule = (TextView) view.findViewById(R.id.tv_group_schedule);
+        TextView groupTime = (TextView) view.findViewById(R.id.tv_group_time);
+        ImageView groupPicture = (ImageView) view.findViewById(R.id.iv_group_img);
 
-        nome.setText(item_list.getNomeExercicio());
-        qtd.setText(item_list.getQuantidade_realizada()+"/"+item_list.getQuantidade_total());
-        pts.setText(item_list.getPontuacao());
+        groupName.setText(item_list.getGroupName());
+        groupLocal.setText(item_list.getGroupLocal());
+        groupSchedule.setText(item_list.getGroupSchedule());
+        groupTime.setText(item_list.getGroupTime());
+        groupPicture.setImageURI(Uri.parse(item_list.getGroupPicturePath()));
         return view;
-//        return null;
     }
 
 }

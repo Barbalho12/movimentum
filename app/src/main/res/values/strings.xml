@@ -22,4 +22,8 @@
     <string name="action_sign_up">Cadastre-se</string>
     <string name="action_sair">Sair</string>
     <string name="action_settings">Settings</string>
+    <string name="tv_free_run">Corrida Livre</string>
+    <string name="tv_local_model">Em torno do campus</string>
+    <string name="tv_days_model">qui,sex</string>
+    <string name="tv_time_model">18h00-19h00</string>
 </resources>
