@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_weight=".60"
+            android:text="pessoa"
+            android:id="@+id/exercicio_nome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:padding="10dp"
+            />
+
+        <TextView
+            android:layout_weight=".20"
+            android:text="casa"
+            android:id="@+id/exercicio_qtd"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:padding="10dp"/>
+
+        <TextView
+            android:layout_weight=".20"
+            android:textColor="#ffbd5b"
+            android:id="@+id/exercicio_pts"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:padding="10dp"/>
+
+</LinearLayout>
