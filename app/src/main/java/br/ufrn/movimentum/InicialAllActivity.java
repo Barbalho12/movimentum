@@ -1,11 +1,11 @@
 package br.ufrn.movimentum;
 
 import android.app.AlertDialog;
-import android.content.ClipData;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.PersistableBundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -32,7 +32,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.ufrn.movimentum.adapters.ExercicioAdapter;
+import br.ufrn.movimentum.adapters.GroupAdapter;
 import br.ufrn.movimentum.adapters.ItemList;
 import br.ufrn.movimentum.model.UserManager;
 
@@ -114,21 +114,19 @@ public class InicialAllActivity extends AppCompatActivity implements NavigationV
         }
 //
         List<ItemList> list_itens = new ArrayList<>();
-        String pathName = "android.resource://"+getPackageName()+"/"+R.drawable.run_group;
-        Log.i("TESTE", "MyClass.getView() — get item number " + pathName );
+        String pathName = "android.resource://"+getPackageName()+"/";
 
+        list_itens.add(new ItemList(1, "Corrida Livre", "Em torno da UFRN", "qui,sex", "18h00-19h00", pathName+R.drawable.running_group));
+        list_itens.add(new ItemList(2, "Natação 2", "UFRN - Piscina 2", "seg,qua", "08h00-09h00", pathName+R.drawable.swimming_group));
+//        list_itens.add(new ItemList(3, "Corrida Livre", "Em torno da UFRN", "qui,sex", "18h00-19h00", pathName+R.drawable.running_group));
+//        list_itens.add(new ItemList(4, "Natação 2", "UFRN - Piscina 2", "seg,qua", "08h00-09h00", pathName+R.drawable.swimming_group));
+//        list_itens.add(new ItemList(5, "Corrida Livre", "Em torno da UFRN", "qui,sex", "18h00-19h00", pathName+R.drawable.running_group));
+//        list_itens.add(new ItemList(6, "Natação 2", "UFRN - Piscina 2", "seg,qua", "08h00-09h00", pathName+R.drawable.swimming_group));
+//        list_itens.add(new ItemList(7, "Corrida Livre", "Em torno da UFRN", "qui,sex", "18h00-19h00", pathName+R.drawable.running_group));
+//        list_itens.add(new ItemList(8, "Natação 2", "UFRN - Piscina 2", "seg,qua", "08h00-09h00", pathName+R.drawable.swimming_group));
 
-        list_itens.add(new ItemList(1, "Corrida Livre", "UFRN", "qui,sex", "18h00-19h00", pathName));
-//        list_itens.add(new ItemList(2,"Exercício Inicial","0","10","09pts"));
-//        list_itens.add(new ItemList(3,"Kanjis Iniciais 1","0","22","18pts"));
-//        list_itens.add(new ItemList(4,"Kanjis iniciais 2","0","35","22pts"));
-//        list_itens.add(new ItemList(5,"Kanjis Intermediários","0","28","46pts"));
-//        list_itens.add(new ItemList(6,"Kanjis Difíceis","0","24","62pts"));
-
-        ExercicioAdapter exercicioAdapter = new ExercicioAdapter(list_itens, this);
-//
-        listview.setAdapter(exercicioAdapter);
-//
+        GroupAdapter groupAdapter = new GroupAdapter(list_itens, this);
+        listview.setAdapter(groupAdapter);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
@@ -153,6 +151,15 @@ public class InicialAllActivity extends AppCompatActivity implements NavigationV
                 }
 
 
+            }
+        });
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
         });
 

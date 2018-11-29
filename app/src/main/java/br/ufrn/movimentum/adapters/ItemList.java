@@ -1,7 +1,5 @@
 package br.ufrn.movimentum.adapters;
 
-import android.media.Image;
-
 /**
  * Created by Barreto on 22/11/2017.
  */

@@ -9,14 +9,13 @@
             android:id="@+id/iv_group_img"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-
             android:layout_weight=".40"
-            android:src="@drawable/run_group"/>
+            android:src="@drawable/remove"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight=".60"
+            android:layout_weight=".58"
             android:maxHeight="30dp"
             android:orientation="vertical"
             android:padding="10dp">

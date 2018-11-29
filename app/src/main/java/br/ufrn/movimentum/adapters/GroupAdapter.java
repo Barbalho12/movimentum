@@ -17,12 +17,12 @@ import br.ufrn.movimentum.R;
  * Created by Barreto on 22/11/2017.
  */
 
-public class ExercicioAdapter extends BaseAdapter {
+public class GroupAdapter extends BaseAdapter {
 
     private final List<ItemList> list_itens;
     private final Activity activity;
 
-    public ExercicioAdapter(List<ItemList> list_itens, Activity activity) {
+    public GroupAdapter(List<ItemList> list_itens, Activity activity) {
         this.list_itens = list_itens;
         this.activity = activity;
     }
