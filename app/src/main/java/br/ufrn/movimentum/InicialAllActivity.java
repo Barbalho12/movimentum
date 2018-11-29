@@ -23,6 +23,8 @@ import android.view.View;
 
 import android.widget.TextView;
 
+import br.ufrn.movimentum.fragments.CommunityFragment;
+import br.ufrn.movimentum.fragments.InitFragment;
 import br.ufrn.movimentum.model.UserManager;
 
 import static android.content.ContentValues.TAG;
@@ -37,6 +39,7 @@ public class InicialAllActivity extends AppCompatActivity implements NavigationV
     private NavigationView navigationView;
 
     TextView tv_user_name_nav;
+    TextView tv_user_role_nav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,16 +61,17 @@ public class InicialAllActivity extends AppCompatActivity implements NavigationV
         userManager = new UserManager(getApplicationContext());
         View header = navigationView.getHeaderView(0);
         tv_user_name_nav = (TextView) header.findViewById(R.id.tv_user_name_nav);
+        tv_user_role_nav= (TextView) header.findViewById(R.id.tv_user_role_nav);
 
-        if (userManager.getActiveUser() != null) {
-            navigationView.getMenu().getItem(0).setTitle("Exercícios Realizados: " + userManager.getActiveUser().getNumberExercRealizados());
-            navigationView.getMenu().getItem(1).setTitle("Exercícios vizualizados: " + userManager.getActiveUser().getNumberExercVistos());
-            navigationView.getMenu().getItem(2).setTitle("Kanjis Vistos: " + userManager.getActiveUser().getKanjis_vistos());
-        } else {
-            navigationView.getMenu().getItem(0).setTitle("Exercícios Realizados: x");
-            navigationView.getMenu().getItem(1).setTitle("Exercícios vizualizados: x");
-            navigationView.getMenu().getItem(2).setTitle("Kanjis Vistos: x");
-        }
+//        if (userManager.getActiveUser() != null) {
+//            navigationView.getMenu().getItem(0).setTitle("Exercícios Realizados: " + userManager.getActiveUser().getNumberExercRealizados());
+//            navigationView.getMenu().getItem(1).setTitle("Exercícios vizualizados: " + userManager.getActiveUser().getNumberExercVistos());
+//            navigationView.getMenu().getItem(2).setTitle("Kanjis Vistos: " + userManager.getActiveUser().getKanjis_vistos());
+//        } else {
+//            navigationView.getMenu().getItem(0).setTitle("Exercícios Realizados: x");
+//            navigationView.getMenu().getItem(1).setTitle("Exercícios vizualizados: x");
+//            navigationView.getMenu().getItem(2).setTitle("Kanjis Vistos: x");
+//        }
 
 
         if (userManager.getActiveUser() != null && tv_user_name_nav != null) {
@@ -85,11 +89,12 @@ public class InicialAllActivity extends AppCompatActivity implements NavigationV
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-        String points = "0";
+        String role = "";
 
         if (userManager.getActiveUser() != null) {
-            points = String.valueOf((int) userManager.getActiveUser().getPontuacao());
-
+//            role = String.valueOf(userManager.getActiveUser().getRole());
+            tv_user_role_nav.setText(userManager.getActiveUser().getRole());
+//            tv_user_role
         }
     }
 

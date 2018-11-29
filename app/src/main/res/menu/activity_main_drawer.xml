@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:visible="true">
+    <!--<group android:visible="true">-->
 
-        <item
-            android:id="@+id/text_exercicios_realizados_nav"
-            android:title="Exercicios realizados: 2" />
-        <item
-            android:id="@+id/text_exercicios_visualizados_nav"
-            android:title="Exercicios visualizados: 3" />
-        <item
-            android:id="@+id/text_knjis_vistos_nav"
-            android:title="Kanjis vistos: 1" />
-    </group>
+        <!--<item-->
+            <!--android:id="@+id/text_exercicios_realizados_nav"-->
+            <!--android:title="Grupos criados: 0" />-->
+        <!--<item-->
+            <!--android:id="@+id/text_exercicios_visualizados_nav"-->
+            <!--android:title="Grupos que participa: 2" />-->
+        <!--<item-->
+            <!--android:id="@+id/text_knjis_vistos_nav"-->
+            <!--android:title="Notícias cadastradas: 1" />-->
+    <!--</group>-->
 
     <item android:title="Opções">
         <menu>

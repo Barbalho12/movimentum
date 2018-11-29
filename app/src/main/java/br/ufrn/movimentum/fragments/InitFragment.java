@@ -1,4 +1,4 @@
-package br.ufrn.movimentum;
+package br.ufrn.movimentum.fragments;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -16,6 +16,8 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.ufrn.movimentum.MainActivity;
+import br.ufrn.movimentum.R;
 import br.ufrn.movimentum.adapters.GroupAdapter;
 import br.ufrn.movimentum.adapters.ItemList;
 

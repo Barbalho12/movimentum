@@ -51,7 +51,7 @@
                     android:layout_weight=".50"
                     android:gravity="left"
                     android:text="@string/tv_days_model"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="#896836"
                     android:textSize="16dp" />
 
                 <TextView
@@ -61,7 +61,7 @@
                     android:layout_weight=".50"
                     android:gravity="right"
                     android:text="@string/tv_time_model"
-                    android:textColor="#ffbd5b"
+                    android:textColor="#896836"
                     android:textSize="16dp" />
 
             </LinearLayout>

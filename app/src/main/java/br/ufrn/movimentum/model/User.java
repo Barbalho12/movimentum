@@ -10,12 +10,13 @@ import java.util.ArrayList;
 public class User implements Serializable {
     private String nome;
     private String email;
+    private String role;
     private String senha;
-    private float pontuacao;
+//    private float pontuacao;
     private String nivel;
 
-    private ArrayList<Integer> exercicios_realizados;
-    private ArrayList<Integer> exercicios_vizualizados;
+//    private ArrayList<Integer> exercicios_realizados;
+//    private ArrayList<Integer> exercicios_vizualizados;
     private int kanjis_vistos;
 
 
@@ -23,12 +24,19 @@ public class User implements Serializable {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
-        pontuacao = 0;
         nivel = "Iniciante";
 
-        exercicios_realizados = new ArrayList<>();
-        exercicios_vizualizados = new ArrayList<>();
-        kanjis_vistos = 0;
+//        exercicios_realizados = new ArrayList<>();
+//        exercicios_vizualizados = new ArrayList<>();
+//        kanjis_vistos = 0;
+    }
+
+    public User(String nome, String email, String senha, String role) {
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        nivel = "Iniciante";
+        this.role = role;
     }
 
     public void addKnjiVisto(){
@@ -36,38 +44,38 @@ public class User implements Serializable {
     }
 
     public void addExercicios_realizados(Integer exerciceId){
-        if(!exercicios_realizados.contains(exerciceId))
-            exercicios_realizados.add(exerciceId);
+//        if(!exercicios_realizados.contains(exerciceId))
+//            exercicios_realizados.add(exerciceId);
     }
 
-    public void addExercicios_vizualizados(Integer exerciceId){
-        if(!exercicios_vizualizados.contains(exerciceId))
-            exercicios_vizualizados.add(exerciceId);
-    }
+//    public void addExercicios_vizualizados(Integer exerciceId){
+//        if(!exercicios_vizualizados.contains(exerciceId))
+//            exercicios_vizualizados.add(exerciceId);
+//    }
 
-    public int getNumberExercRealizados(){
-        return exercicios_realizados.size();
-    }
+//    public int getNumberExercRealizados(){
+//        return exercicios_realizados.size();
+//    }
+//
+//    public int getNumberExercVistos(){
+//        return exercicios_vizualizados.size();
+//    }
 
-    public int getNumberExercVistos(){
-        return exercicios_vizualizados.size();
-    }
+//    public ArrayList<Integer> getExercicios_realizados() {
+//        return exercicios_realizados;
+//    }
 
-    public ArrayList<Integer> getExercicios_realizados() {
-        return exercicios_realizados;
-    }
+//    public void setExercicios_realizados(ArrayList<Integer> exercicios_realizados) {
+//        this.exercicios_realizados = exercicios_realizados;
+//    }
 
-    public void setExercicios_realizados(ArrayList<Integer> exercicios_realizados) {
-        this.exercicios_realizados = exercicios_realizados;
-    }
+//    public ArrayList<Integer> getExercicios_vizualizados() {
+//        return exercicios_vizualizados;
+//    }
 
-    public ArrayList<Integer> getExercicios_vizualizados() {
-        return exercicios_vizualizados;
-    }
-
-    public void setExercicios_vizualizados(ArrayList<Integer> exercicios_vizualizados) {
-        this.exercicios_vizualizados = exercicios_vizualizados;
-    }
+//    public void setExercicios_vizualizados(ArrayList<Integer> exercicios_vizualizados) {
+//        this.exercicios_vizualizados = exercicios_vizualizados;
+//    }
 
     public int getKanjis_vistos() {
         return kanjis_vistos;
@@ -101,13 +109,13 @@ public class User implements Serializable {
         this.senha = senha;
     }
 
-    public float getPontuacao() {
-        return pontuacao;
-    }
-
-    public void setPontuacao(float pontuacao) {
-        this.pontuacao = pontuacao;
-    }
+//    public float getPontuacao() {
+//        return pontuacao;
+//    }
+//
+//    public void setPontuacao(float pontuacao) {
+//        this.pontuacao = pontuacao;
+//    }
 
     public String getNivel() {
         return nivel;
@@ -135,5 +143,13 @@ public class User implements Serializable {
         result = 31 * result + email.hashCode();
         result = 31 * result + senha.hashCode();
         return result;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
