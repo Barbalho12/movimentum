@@ -4,62 +4,67 @@
     android:layout_height="100dp"
     android:orientation="horizontal">
 
-        <ImageView
-            android:scaleType="centerCrop"
-            android:id="@+id/iv_group_img"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight=".40"
-            android:src="@drawable/remove"/>
+    <ImageView
+        android:id="@+id/iv_group_img"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:scaleType="centerCrop"
+        android:src="@drawable/remove" />
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight=".58"
             android:maxHeight="30dp"
             android:orientation="vertical"
             android:padding="10dp">
 
-                <TextView
-                    android:id="@+id/tv_group_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tv_free_run"
-                    android:textStyle="bold"
-                    android:textSize="20dp" />
+            <TextView
+                android:id="@+id/tv_group_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_free_run"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_group_local"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_local_model"
+                android:textSize="16dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tv_group_local"
-                    android:layout_width="match_parent"
+                    android:id="@+id/tv_group_schedule"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tv_local_model"
+                    android:layout_weight=".50"
+                    android:gravity="left"
+                    android:text="@string/tv_days_model"
+                    android:textColor="@color/colorAccent"
                     android:textSize="16dp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/tv_group_time"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_weight=".50"
+                    android:gravity="right"
+                    android:text="@string/tv_time_model"
+                    android:textColor="#ffbd5b"
+                    android:textSize="16dp" />
 
-                        <TextView
-                            android:layout_weight=".50"
-                            android:id="@+id/tv_group_schedule"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="left"
-                            android:text="@string/tv_days_model"
-                            android:textColor="@color/colorAccent"
-                            android:textSize="16dp" />
-
-                        <TextView
-                            android:layout_weight=".50"
-                            android:id="@+id/tv_group_time"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="right"
-                            android:text="@string/tv_time_model"
-                            android:textColor="#ffbd5b"
-                            android:textSize="16dp" />
-
-                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>

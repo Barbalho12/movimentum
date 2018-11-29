@@ -3,9 +3,7 @@ package br.ufrn.movimentum;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -19,26 +17,17 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 
-import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import br.ufrn.movimentum.adapters.GroupAdapter;
-import br.ufrn.movimentum.adapters.ItemList;
 import br.ufrn.movimentum.model.UserManager;
 
 import static android.content.ContentValues.TAG;
 
-public class InicialAllActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class InicialAllActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
@@ -49,18 +38,15 @@ public class InicialAllActivity extends AppCompatActivity implements NavigationV
 
     TextView tv_user_name_nav;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all);
 
-
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-       DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
@@ -73,96 +59,38 @@ public class InicialAllActivity extends AppCompatActivity implements NavigationV
         View header = navigationView.getHeaderView(0);
         tv_user_name_nav = (TextView) header.findViewById(R.id.tv_user_name_nav);
 
-//        exercicios_realizados
-//        exercicios_vizualizados
-//        kanjis_vistos
-//
-
-        if(userManager.getActiveUser()!=null){
-            navigationView.getMenu().getItem(0).setTitle("Exercícios Realizados: "+userManager.getActiveUser().getNumberExercRealizados());
-            navigationView.getMenu().getItem(1).setTitle("Exercícios vizualizados: "+userManager.getActiveUser().getNumberExercVistos());
-            navigationView.getMenu().getItem(2).setTitle("Kanjis Vistos: "+userManager.getActiveUser().getKanjis_vistos());
-        }else{
+        if (userManager.getActiveUser() != null) {
+            navigationView.getMenu().getItem(0).setTitle("Exercícios Realizados: " + userManager.getActiveUser().getNumberExercRealizados());
+            navigationView.getMenu().getItem(1).setTitle("Exercícios vizualizados: " + userManager.getActiveUser().getNumberExercVistos());
+            navigationView.getMenu().getItem(2).setTitle("Kanjis Vistos: " + userManager.getActiveUser().getKanjis_vistos());
+        } else {
             navigationView.getMenu().getItem(0).setTitle("Exercícios Realizados: x");
             navigationView.getMenu().getItem(1).setTitle("Exercícios vizualizados: x");
             navigationView.getMenu().getItem(2).setTitle("Kanjis Vistos: x");
         }
-//
 
-        if(userManager.getActiveUser()!=null && tv_user_name_nav != null) {
+
+        if (userManager.getActiveUser() != null && tv_user_name_nav != null) {
             Log.v(TAG, userManager.getActiveUser().getNome());
 
             tv_user_name_nav.setText(userManager.getActiveUser().getNome());
         }
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-//
+
 //        // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
-//
-        ListView listview = (ListView) findViewById(R.id.listview);
-//
+
         String points = "0";
-//
-        if(userManager.getActiveUser()!=null){
-            points = String.valueOf( (int) userManager.getActiveUser().getPontuacao());
+
+        if (userManager.getActiveUser() != null) {
+            points = String.valueOf((int) userManager.getActiveUser().getPontuacao());
 
         }
-//
-        List<ItemList> list_itens = new ArrayList<>();
-        String pathName = "android.resource://"+getPackageName()+"/";
-
-        list_itens.add(new ItemList(1, "Corrida Livre", "Em torno da UFRN", "qui,sex", "18h00-19h00", pathName+R.drawable.running_group));
-        list_itens.add(new ItemList(2, "Natação 2", "UFRN - Piscina 2", "seg,qua", "08h00-09h00", pathName+R.drawable.swimming_group));
-//        list_itens.add(new ItemList(3, "Corrida Livre", "Em torno da UFRN", "qui,sex", "18h00-19h00", pathName+R.drawable.running_group));
-//        list_itens.add(new ItemList(4, "Natação 2", "UFRN - Piscina 2", "seg,qua", "08h00-09h00", pathName+R.drawable.swimming_group));
-//        list_itens.add(new ItemList(5, "Corrida Livre", "Em torno da UFRN", "qui,sex", "18h00-19h00", pathName+R.drawable.running_group));
-//        list_itens.add(new ItemList(6, "Natação 2", "UFRN - Piscina 2", "seg,qua", "08h00-09h00", pathName+R.drawable.swimming_group));
-//        list_itens.add(new ItemList(7, "Corrida Livre", "Em torno da UFRN", "qui,sex", "18h00-19h00", pathName+R.drawable.running_group));
-//        list_itens.add(new ItemList(8, "Natação 2", "UFRN - Piscina 2", "seg,qua", "08h00-09h00", pathName+R.drawable.swimming_group));
-
-        GroupAdapter groupAdapter = new GroupAdapter(list_itens, this);
-        listview.setAdapter(groupAdapter);
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-//                Toast.makeText(getApplicationContext(),
-//                        "Clicou no item " + position, Toast.LENGTH_LONG).show();
-                if(position==0){
-                    Intent intent = new Intent(InicialAllActivity.this, MainActivity.class);
-                    startActivity(intent);
-//                    finish();
-                }else{
-                    AlertDialog alertDialog = new AlertDialog.Builder(InicialAllActivity.this).create();
-                    alertDialog.setTitle("Alerta");
-                    alertDialog.setMessage("Não implementado");
-                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            });
-                    alertDialog.show();
-                }
-
-
-            }
-        });
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
     }
 
 
@@ -173,7 +101,7 @@ public class InicialAllActivity extends AppCompatActivity implements NavigationV
         return true;
     }
 
-    void alert(){
+    void alert() {
         AlertDialog alertDialog = new AlertDialog.Builder(InicialAllActivity.this).create();
         alertDialog.setTitle("Alerta");
         alertDialog.setMessage("Confirme para sair");
@@ -209,38 +137,6 @@ public class InicialAllActivity extends AppCompatActivity implements NavigationV
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        public PlaceholderFragment() {
-        }
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_inicial_all, container, false);
-            return rootView;
-        }
-    }
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
@@ -248,15 +144,23 @@ public class InicialAllActivity extends AppCompatActivity implements NavigationV
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
+
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
         @Override
         public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+            switch (position) {
+                case 0: // Fragment # 0 - This will show FirstFragment
+                    return InitFragment.newInstance(0);
+                case 1: // Fragment # 0 - This will show FirstFragment different title
+                    return CommunityFragment.newInstance(1);
+                case 2: // Fragment # 1 - This will show SecondFragment
+                    return NewsFragment.newInstance(0);
+                default:
+                    return null;
+            }
         }
 
         @Override
