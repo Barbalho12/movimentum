@@ -3,6 +3,7 @@ package br.ufrn.movimentum;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -58,8 +59,10 @@ public class CadastrarActivity extends AppCompatActivity {
                 if(senha.equals(senha_rep)){
                     boolean sucess = userManager.addUser(new User(nome,email,senha,role), getApplicationContext());
                     if(sucess){
-                        alert("Usuário cadastrado com sucesso!");
-                        Intent intent = new Intent(CadastrarActivity.this, MainActivity.class);
+//                        alert("Usuário cadastrado com sucesso!");
+                        Snackbar.make(v, "Usuário cadastrado com sucesso", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+                        Intent intent = new Intent(getApplicationContext(), InicialAllActivity.class);
                         startActivity(intent);
                         finish();
                     }else{

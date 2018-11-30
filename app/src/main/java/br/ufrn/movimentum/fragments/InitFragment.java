@@ -16,7 +16,9 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.ufrn.movimentum.InicialAllActivity;
 import br.ufrn.movimentum.MainActivity;
+import br.ufrn.movimentum.NewGroupActivity;
 import br.ufrn.movimentum.R;
 import br.ufrn.movimentum.adapters.GroupAdapter;
 import br.ufrn.movimentum.adapters.ItemList;
@@ -62,13 +64,12 @@ public class InitFragment extends Fragment {
         listview.setAdapter(groupAdapter);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 //                Toast.makeText(getApplicationContext(),
 //                        "Clicou no item " + position, Toast.LENGTH_LONG).show();
                 if(position==0){
-                    Intent intent = new Intent(getActivity(), MainActivity.class);
-                    startActivity(intent);
+//                    Intent intent = new Intent(getActivity(), MainActivity.class);
+//                    startActivity(intent);
 //                    finish();
                 }else{
                     AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
@@ -89,8 +90,12 @@ public class InitFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Ação em Início", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(getContext(), NewGroupActivity.class);
+                startActivity(intent);
+//                finish();
+
+//                Snackbar.make(view, "Ação em Início", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
             }
         });
 

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".NewGroupActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar_new_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/appbar_padding_top"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_new_group"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        </android.support.v7.widget.Toolbar>
+
+        <!--<android.support.design.widget.TabLayout-->
+            <!--android:id="@+id/tabs"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content" />-->
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30px"
+            android:text="Novo Grupo"
+            android:textAlignment="center"
+            android:textSize="@dimen/title_size"/>
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_marginTop="0dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/add_picture" />
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/tv_title_new_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Título do grupo"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:singleLine="true"
+                tools:ignore="InvalidImeActionId" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/tv_descript_new_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Descrição do grupo"
+                android:imeOptions="actionDone"
+                android:inputType="textMultiLine"
+                android:maxLines="5"
+                tools:ignore="InvalidImeActionId" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <!--<android.support.design.widget.TextInputLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+
+            <!--<EditText-->
+                <!--android:id="@+id/tv_local_new_group"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:hint="Local"-->
+                <!--android:imeOptions="actionNext"-->
+                <!--android:inputType="textAutoComplete"-->
+                <!--android:maxLines="1"-->
+                <!--tools:ignore="InvalidImeActionId" />-->
+
+        <!--</android.support.design.widget.TextInputLayout>-->
+
+        <!--<android.support.v7.widget.AppCompatSpinner-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:entries="@array/country_arrays"-->
+            <!--android:prompt="@string/country_prompt"-->
+            <!--android:background="@drawable/bg_dropdown"/>-->
+
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/sp_local_new_group"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="15dp"
+            android:tooltipText="Selecione um lugar"
+            android:layout_height="wrap_content"/>
+        <!--<Spinner-->
+            <!--android:id="@+id/sp_local_new_group"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:padding="15dp"-->
+            <!---->
+            <!--android:tooltipText="Selecione um lugar"-->
+            <!--android:layout_height="wrap_content" />-->
+
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
