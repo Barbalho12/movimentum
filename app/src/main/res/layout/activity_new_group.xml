@@ -45,6 +45,8 @@
             android:textSize="@dimen/title_size"/>
 
         <ImageView
+            android:id="@+id/iv_image_new_group"
+            android:scaleType="centerCrop"
             android:layout_width="100dp"
             android:layout_marginTop="0dp"
             android:layout_height="100dp"
@@ -116,6 +118,68 @@
             android:layout_marginTop="15dp"
             android:tooltipText="Selecione um lugar"
             android:layout_height="wrap_content"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_marginTop="15dp"
+                android:id="@+id/tv_capacity_new_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Capacidade"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:inputType="number"
+                android:singleLine="true"
+                tools:ignore="InvalidImeActionId" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <!--<NumberPicker-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--&gt;-->
+            <!---->
+        <!--</NumberPicker>-->
+
+        <!--<DatePicker-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--&gt;</DatePicker>-->
+
+
+
+        <!--<EditText-->
+            <!--android:layout_marginTop="15dp"-->
+            <!--android:id="@+id/et_datetime_new_group"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:hint="Horário"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_centerVertical="true"></EditText>-->
+
+        <!--<android.support.design.widget.TextInputLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+
+
+
+            <!--<EditText-->
+                <!--android:layout_marginTop="15dp"-->
+                <!--android:id="@+id/et_datetime_new_group"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:hint="Horário"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:imeOptions="actionNext"-->
+                <!--android:inputType="datetime"-->
+                <!--tools:ignore="InvalidImeActionId" />-->
+
+        <!--</android.support.design.widget.TextInputLayout>-->
         <!--<Spinner-->
             <!--android:id="@+id/sp_local_new_group"-->
             <!--android:layout_width="match_parent"-->
@@ -124,7 +188,33 @@
             <!--android:tooltipText="Selecione um lugar"-->
             <!--android:layout_height="wrap_content" />-->
 
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+            <EditText
+                android:id="@+id/etChooseTime_init"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:hint="Tempo Inicial" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/etChooseTime_end"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:hint="Tempo Final" />
+
+        </android.support.design.widget.TextInputLayout>
 
 
     </LinearLayout>
