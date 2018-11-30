@@ -39,7 +39,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="30px"
+            android:layout_margin="25px"
             android:text="Novo Grupo"
             android:textAlignment="center"
             android:textSize="@dimen/title_size"/>
@@ -47,9 +47,9 @@
         <ImageView
             android:id="@+id/iv_image_new_group"
             android:scaleType="centerCrop"
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_marginTop="0dp"
-            android:layout_height="100dp"
+            android:layout_height="80dp"
             android:layout_gravity="center_horizontal"
             android:src="@drawable/add_picture" />
 
@@ -188,33 +188,96 @@
             <!--android:tooltipText="Selecione um lugar"-->
             <!--android:layout_height="wrap_content" />-->
 
-        <android.support.design.widget.TextInputLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_marginTop="10px">
 
-            <EditText
-                android:id="@+id/etChooseTime_init"
-                android:layout_width="150dp"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:hint="Tempo Inicial" />
+                android:text="Intervalo de duração"/>
 
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/etChooseTime_end"
-                android:layout_width="150dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:hint="Tempo Final" />
+                android:orientation="horizontal">
 
-        </android.support.design.widget.TextInputLayout>
+                <Button
+                    android:id="@+id/bt_time_init"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_centerVertical="true"
+                    android:hint="Tempo Inicial" />
+
+
+                <Button
+                    android:id="@+id/bt_time_end"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:hint="Tempo Final"
+                    android:layout_width="0dp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+
+                <CheckBox
+                    android:text="D"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <CheckBox
+                    android:text="S"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <CheckBox
+                    android:text="T"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <CheckBox
+                    android:text="Q"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <CheckBox
+                    android:text="Q"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <CheckBox
+                    android:text="S"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <CheckBox
+                    android:text="S"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Criar"/>
+
+
+
+        </LinearLayout>
+
+
+
+
 
 
     </LinearLayout>

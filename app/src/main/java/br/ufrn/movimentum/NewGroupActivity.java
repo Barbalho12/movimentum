@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -41,8 +42,8 @@ public class NewGroupActivity extends AppCompatActivity {
 //    int currentHour;
 //    int currentMinute;
 //    String amPm;
-    private EditText etChooseTime_init;
-    private EditText etChooseTime_end;
+    private Button bt_time_init;
+    private Button bt_time_end;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,30 +87,30 @@ public class NewGroupActivity extends AppCompatActivity {
 
 
 
-        etChooseTime_init = findViewById(R.id.etChooseTime_init);
-        etChooseTime_init.setOnClickListener(new View.OnClickListener() {
+        bt_time_init = findViewById(R.id.bt_time_init);
+        bt_time_init.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 TimePickerDialog timePickerDialog = new TimePickerDialog(NewGroupActivity.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
 
-                        etChooseTime_init.setText(hourOfDay + ":" + minutes);
+                        bt_time_init.setText(hourOfDay + ":" + minutes);
                     }
                 }, 0, 0, false);
                 timePickerDialog.show();
             }
         });
 
-        etChooseTime_end = findViewById(R.id.etChooseTime_end);
-        etChooseTime_end.setOnClickListener(new View.OnClickListener() {
+        bt_time_end = findViewById(R.id.bt_time_end);
+        bt_time_end.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 TimePickerDialog timePickerDialog = new TimePickerDialog(NewGroupActivity.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
 
-                        etChooseTime_end.setText(hourOfDay + ":" + minutes);
+                        bt_time_end.setText(hourOfDay + ":" + minutes);
                     }
                 }, 0, 0, false);
                 timePickerDialog.show();
