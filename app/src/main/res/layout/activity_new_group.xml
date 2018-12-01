@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -24,31 +29,19 @@
 
         </android.support.v7.widget.Toolbar>
 
-        <!--<android.support.design.widget.TabLayout-->
-            <!--android:id="@+id/tabs"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content" />-->
-
     </android.support.design.widget.AppBarLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="25px"
-            android:text="Novo Grupo"
-            android:textAlignment="center"
-            android:textSize="@dimen/title_size"/>
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <ImageView
             android:id="@+id/iv_image_new_group"
             android:scaleType="centerCrop"
             android:layout_width="80dp"
-            android:layout_marginTop="0dp"
+            android:layout_marginTop="@dimen/margin_form"
             android:layout_height="80dp"
             android:layout_gravity="center_horizontal"
             android:src="@drawable/add_picture" />
@@ -56,7 +49,8 @@
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_form">
 
             <EditText
                 android:id="@+id/tv_title_new_group"
@@ -70,11 +64,10 @@
 
         </android.support.design.widget.TextInputLayout>
 
-
-
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_form">
 
             <EditText
                 android:id="@+id/tv_descript_new_group"
@@ -89,111 +82,98 @@
         </android.support.design.widget.TextInputLayout>
 
 
-        <!--<android.support.design.widget.TextInputLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content">-->
 
-            <!--<EditText-->
-                <!--android:id="@+id/tv_local_new_group"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:hint="Local"-->
-                <!--android:imeOptions="actionNext"-->
-                <!--android:inputType="textAutoComplete"-->
-                <!--android:maxLines="1"-->
-                <!--tools:ignore="InvalidImeActionId" />-->
 
-        <!--</android.support.design.widget.TextInputLayout>-->
 
-        <!--<android.support.v7.widget.AppCompatSpinner-->
+        <!--<LinearLayout-->
+            <!--android:layout_marginTop="@dimen/margin_form"-->
             <!--android:layout_width="match_parent"-->
             <!--android:layout_height="wrap_content"-->
-            <!--android:entries="@array/country_arrays"-->
-            <!--android:prompt="@string/country_prompt"-->
-            <!--android:background="@drawable/bg_dropdown"/>-->
+            <!--android:orientation="horizontal">-->
 
-        <android.support.v7.widget.AppCompatSpinner
-            android:id="@+id/sp_local_new_group"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="15dp"
-            android:tooltipText="Selecione um lugar"
-            android:layout_height="wrap_content"/>
+
+            <!--<TextView-->
+
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:hint="Capacidade"-->
+                <!--android:gravity="center_vertical"-->
+                <!--/>-->
+
+            <!--<Button-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="+"/>-->
+
+            <!--<EditText-->
+                <!--android:id="@+id/tv_capacity_new_group"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:imeOptions="actionDone"-->
+                <!--android:maxLength="3"-->
+                <!--android:inputType="number"-->
+                <!--android:singleLine="true"-->
+                <!--tools:ignore="InvalidImeActionId" />-->
+
+            <!--<Button-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="-"/>-->
+
+        <!--</LinearLayout>-->
+
+
+
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_form">
 
             <EditText
-                android:layout_marginTop="15dp"
                 android:id="@+id/tv_capacity_new_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Capacidade"
-                android:imeOptions="actionNext"
+                android:imeOptions="actionDone"
                 android:maxLines="1"
+                android:maxLength="3"
                 android:inputType="number"
                 android:singleLine="true"
                 tools:ignore="InvalidImeActionId" />
 
         </android.support.design.widget.TextInputLayout>
 
-
-        <!--<NumberPicker-->
+        <!--<LinearLayout-->
+            <!--android:layout_marginTop="@dimen/margin_form"-->
             <!--android:layout_width="match_parent"-->
             <!--android:layout_height="wrap_content"-->
-            <!--&gt;-->
-            <!---->
-        <!--</NumberPicker>-->
-
-        <!--<DatePicker-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--&gt;</DatePicker>-->
+            <!--android:orientation="horizontal"-->
+            <!--android:weightSum="1">-->
 
 
-
-        <!--<EditText-->
-            <!--android:layout_marginTop="15dp"-->
-            <!--android:id="@+id/et_datetime_new_group"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:hint="Horário"-->
-            <!--android:layout_centerHorizontal="true"-->
-            <!--android:layout_centerVertical="true"></EditText>-->
-
-        <!--<android.support.design.widget.TextInputLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content">-->
-
-
-
-            <!--<EditText-->
-                <!--android:layout_marginTop="15dp"-->
-                <!--android:id="@+id/et_datetime_new_group"-->
-                <!--android:layout_width="match_parent"-->
+            <!--<TextView-->
+                <!--android:layout_weight="0.5"-->
+                <!--android:layout_width="wrap_content"-->
                 <!--android:layout_height="wrap_content"-->
-                <!--android:hint="Horário"-->
-                <!--android:layout_centerHorizontal="true"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:imeOptions="actionNext"-->
-                <!--android:inputType="datetime"-->
-                <!--tools:ignore="InvalidImeActionId" />-->
+                <!--android:text="Local"-->
+                <!--android:gravity="center_vertical"-->
+                <!--/>-->
+            <android.support.v7.widget.AppCompatSpinner
 
-        <!--</android.support.design.widget.TextInputLayout>-->
-        <!--<Spinner-->
-            <!--android:id="@+id/sp_local_new_group"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:padding="15dp"-->
-            <!---->
-            <!--android:tooltipText="Selecione um lugar"-->
-            <!--android:layout_height="wrap_content" />-->
+                android:layout_marginTop="@dimen/margin_form"
+                android:id="@+id/sp_local_new_group"
+                android:layout_width="match_parent"
+                android:tooltipText="Selecione um lugar"
+                android:layout_height="wrap_content"/>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical"
-            android:layout_marginTop="10px">
+            android:layout_marginTop="@dimen/margin_form">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -206,25 +186,29 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/bt_time_init"
+                    android:id="@+id/bt_time_init_new_group"
                     android:layout_height="wrap_content"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_centerVertical="true"
-                    android:hint="Tempo Inicial" />
-
+                    android:hint="Hora Inicial" />
 
                 <Button
-                    android:id="@+id/bt_time_end"
+                    android:id="@+id/bt_time_end_new_group"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    android:hint="Tempo Final"
+                    android:hint="Hora Final"
                     android:layout_width="0dp" />
-
-
             </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dias na semana"
+                android:layout_marginTop="@dimen/margin_form"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -232,54 +216,55 @@
                 android:orientation="horizontal"
                 android:gravity="center">
 
-
                 <CheckBox
+                    android:id="@+id/cb_dom_new_group"
                     android:text="D"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
                 <CheckBox
+                    android:id="@+id/cb_seg_new_group"
                     android:text="S"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <CheckBox
+                    android:id="@+id/cb_ter_new_group"
                     android:text="T"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <CheckBox
+                    android:id="@+id/cb_qua_new_group"
                     android:text="Q"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <CheckBox
+                    android:id="@+id/cb_qui_new_group"
                     android:text="Q"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <CheckBox
+                    android:id="@+id/cb_sex_new_group"
                     android:text="S"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <CheckBox
+                    android:id="@+id/cb_sab_new_group"
                     android:text="S"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
-
-
             </LinearLayout>
 
             <Button
+                android:id="@+id/bt_create_new_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Criar"/>
-
-
+                android:text="Criar"
+                android:padding="20dp"
+                android:layout_marginTop="@dimen/margin_form"/>
 
         </LinearLayout>
-
-
-
-
-
 
     </LinearLayout>
 
 </LinearLayout>
+</ScrollView>

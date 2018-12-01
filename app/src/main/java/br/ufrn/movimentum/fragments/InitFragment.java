@@ -20,6 +20,7 @@ import br.ufrn.movimentum.InicialAllActivity;
 import br.ufrn.movimentum.MainActivity;
 import br.ufrn.movimentum.NewGroupActivity;
 import br.ufrn.movimentum.R;
+import br.ufrn.movimentum.ViewGroupActivity;
 import br.ufrn.movimentum.adapters.GroupAdapter;
 import br.ufrn.movimentum.adapters.ItemList;
 
@@ -68,8 +69,8 @@ public class InitFragment extends Fragment {
 //                Toast.makeText(getApplicationContext(),
 //                        "Clicou no item " + position, Toast.LENGTH_LONG).show();
                 if(position==0){
-//                    Intent intent = new Intent(getActivity(), MainActivity.class);
-//                    startActivity(intent);
+                    Intent intent = new Intent(getActivity(), ViewGroupActivity.class);
+                    startActivity(intent);
 //                    finish();
                 }else{
                     AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();

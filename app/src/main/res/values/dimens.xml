@@ -9,4 +9,6 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
     <dimen name="title_size">15pt</dimen>
+    <dimen name="margin_form">15dp</dimen>
+    <dimen name="margin_view_group">13dp</dimen>
 </resources>

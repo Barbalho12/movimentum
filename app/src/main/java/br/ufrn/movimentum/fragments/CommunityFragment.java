@@ -19,6 +19,7 @@ import java.util.List;
 
 import br.ufrn.movimentum.MainActivity;
 import br.ufrn.movimentum.R;
+import br.ufrn.movimentum.ViewGroupActivity;
 import br.ufrn.movimentum.adapters.GroupAdapter;
 import br.ufrn.movimentum.adapters.ItemList;
 
@@ -75,7 +76,7 @@ public class CommunityFragment extends Fragment {
 //                Toast.makeText(getApplicationContext(),
 //                        "Clicou no item " + position, Toast.LENGTH_LONG).show();
                 if(position==0){
-                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    Intent intent = new Intent(getActivity(), ViewGroupActivity.class);
                     startActivity(intent);
 //                    finish();
                 }else{

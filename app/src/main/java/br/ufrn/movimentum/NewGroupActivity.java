@@ -35,15 +35,9 @@ public class NewGroupActivity extends AppCompatActivity {
 
     private ImageView iv_image_new_group;
 
+    private Button bt_time_init_new_group;
+    private Button bt_time_end_new_group;
 
-//    EditText chooseTime;
-//    TimePickerDialog timePickerDialog;
-//    Calendar calendar;
-//    int currentHour;
-//    int currentMinute;
-//    String amPm;
-    private Button bt_time_init;
-    private Button bt_time_end;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,22 +48,14 @@ public class NewGroupActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle("Novo Grupo");
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
-//                startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
         });
-
-//        mActionBar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_action_back));
-//        mActionBar.setNavigationOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                //What to do on back clicked
-//            }
-//        });
 
         addItemsOnSpinner();
 
@@ -85,61 +71,35 @@ public class NewGroupActivity extends AppCompatActivity {
             }
         });
 
-
-
-        bt_time_init = findViewById(R.id.bt_time_init);
-        bt_time_init.setOnClickListener(new View.OnClickListener() {
+        bt_time_init_new_group = findViewById(R.id.bt_time_init_new_group);
+        bt_time_init_new_group.setBackgroundColor(Color.argb(180, 150, 200, 150));
+        bt_time_init_new_group.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 TimePickerDialog timePickerDialog = new TimePickerDialog(NewGroupActivity.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
-
-                        bt_time_init.setText(hourOfDay + ":" + minutes);
+                        bt_time_init_new_group.setText(String.format("%02d:%02d", hourOfDay, minutes));
                     }
-                }, 0, 0, false);
+                }, 0, 0, true);
                 timePickerDialog.show();
             }
         });
 
-        bt_time_end = findViewById(R.id.bt_time_end);
-        bt_time_end.setOnClickListener(new View.OnClickListener() {
+        bt_time_end_new_group = findViewById(R.id.bt_time_end_new_group);
+        bt_time_end_new_group.setBackgroundColor(Color.argb(180, 200, 150, 150));
+        bt_time_end_new_group.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 TimePickerDialog timePickerDialog = new TimePickerDialog(NewGroupActivity.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
-
-                        bt_time_end.setText(hourOfDay + ":" + minutes);
+                        bt_time_end_new_group.setText(String.format("%02d:%02d", hourOfDay, minutes));
                     }
-                }, 0, 0, false);
+                }, 0, 0, true);
                 timePickerDialog.show();
             }
         });
-
-//        chooseTime = findViewById(R.id.et_datetime_new_group);
-//        chooseTime.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                calendar = Calendar.getInstance();
-//                currentHour = calendar.get(Calendar.HOUR_OF_DAY);
-//                currentMinute = calendar.get(Calendar.MINUTE);
-//
-//                timePickerDialog = new TimePickerDialog(getApplication(), new TimePickerDialog.OnTimeSetListener() {
-//                    @Override
-//                    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
-//                        if (hourOfDay >= 12) {
-//                            amPm = "PM";
-//                        } else {
-//                            amPm = "AM";
-//                        }
-//                        chooseTime.setText(String.format("%02d:%02d", hourOfDay, minutes) + amPm);
-//                    }
-//                }, currentHour, currentMinute, false);
-//
-//                timePickerDialog.show();
-//            }
-//        });
     }
 
     // add items into spinner dynamically
@@ -154,24 +114,25 @@ public class NewGroupActivity extends AppCompatActivity {
         list.add("UFRN - Piscina 2");
         list.add("UFRN - Piscina 1");
         list.add("Em torno da UFRN");
-//        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
-//                android.R.layout.simple_spinner_item, list);
 
         final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(
-                this,android.R.layout.simple_spinner_item, list){
+                this, android.R.layout.simple_spinner_item, list) {
             @Override
-            public boolean isEnabled(int position){
-                if(position == 0){return false;
-                } else { return true; }
+            public boolean isEnabled(int position) {
+                if (position == 0) {
+                    return false;
+                } else {
+                    return true;
+                }
             }
 
             @Override
             public View getDropDownView(int position, View convertView, ViewGroup parent) {
                 View view = super.getDropDownView(position, convertView, parent);
                 TextView tv = (TextView) view;
-                if(position == 0){
+                if (position == 0) {
                     tv.setTextColor(Color.GRAY);
-                }else {
+                } else {
                     tv.setTextColor(Color.BLACK);
                 }
 
@@ -184,62 +145,23 @@ public class NewGroupActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String selectedItemText = (String) adapterView.getItemAtPosition(i);
-                if(i > 0){
-                    // Ação realizada quando um elemento diferente
-                    // do hint é selecionado
+                if (i > 0) {
                 }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
-
             }
         });
-
-
-
-
-    }
-
-
-
-    @Override
-    public void onBackPressed() {
-
-//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        if (drawer.isDrawerOpen(GravityCompat.START)) {
-//            drawer.closeDrawer(GravityCompat.START);
-//        } else {
-//            super.onBackPressed();
-//        }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == RESULT_LOAD_IMAGE  && resultCode == RESULT_OK) {
+        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK) {
             Uri fullPhotoUri = data.getData();
             iv_image_new_group.setImageURI(fullPhotoUri);
-
         }
-//        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
-//            Uri selectedImage = data.getData();
-//            String[] filePathColumn = { MediaStore.Images.Media.DATA };
-//
-//            Cursor cursor = getContentResolver().query(selectedImage,
-//                    filePathColumn, null, null, null);
-//            cursor.moveToFirst();
-//
-//            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-//            String picturePath = cursor.getString(columnIndex).replace("file://","");
-//            cursor.close();
-//
-//            ImageView imageView = (ImageView) findViewById(R.id.iv_image_new_group);
-//            imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-//
-//        }
-
-
     }
 }
