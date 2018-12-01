@@ -2,6 +2,7 @@ package br.ufrn.movimentum;
 
 import android.graphics.Color;
 import android.net.Uri;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -35,7 +36,13 @@ public class ViewGroupActivity extends AppCompatActivity {
         initViewWidgets();
         setValuesDefault();
 
-
+        bt_request_participate_group.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Não implementado", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
     }
 
     private void setValuesDefault() {

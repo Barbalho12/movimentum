@@ -19,7 +19,7 @@
         <!--android:layout_height="match_parent"-->
         <!--android:layout_gravity="start"-->
         <!--android:fitsSystemWindows="true"-->
-        <!--app:headerLayout="@layout/nav_header_main"-->
+        <!--app:headerLayout="@activity_search_news/nav_header_main"-->
         <!--app:menu="@menu/activity_main_drawer" >-->
         <!---->
 
@@ -53,7 +53,7 @@
             <!--android:orientation="vertical"-->
             <!--android:layout_weight="1">-->
 
-            <!--<include layout="@layout/nav_header_main" />-->
+            <!--<include activity_search_news="@activity_search_news/nav_header_main" />-->
 
             <!--<ListView-->
                 <!--android:id="@+id/lst_menu_items"-->

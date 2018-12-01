@@ -1,4 +1,4 @@
-package br.ufrn.movimentum;
+package br.ufrn.movimentum.fragments;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -17,6 +17,9 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.ufrn.movimentum.MainActivity;
+import br.ufrn.movimentum.R;
+import br.ufrn.movimentum.SearchNewsActivity;
 import br.ufrn.movimentum.adapters.GroupAdapter;
 import br.ufrn.movimentum.adapters.ItemList;
 
@@ -56,20 +59,24 @@ public class NewsFragment extends Fragment {
 //                Toast.makeText(getApplicationContext(),
 //                        "Clicou no item " + position, Toast.LENGTH_LONG).show();
                 if(position==0){
-                    Intent intent = new Intent(getActivity(), MainActivity.class);
-                    startActivity(intent);
-//                    finish();
+                    Snackbar.make(view, "Não implementado", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+//                    Intent intent = new Intent(getActivity(), SearchNewsActivity.class);
+//                    startActivity(intent);
+////                    finish();
                 }else{
-                    AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
-                    alertDialog.setTitle("Alerta");
-                    alertDialog.setMessage("Não implementado");
-                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            });
-                    alertDialog.show();
+                    Snackbar.make(view, "Não implementado", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+//                    AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+//                    alertDialog.setTitle("Alerta");
+//                    alertDialog.setMessage("Não implementado");
+//                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+//                            new DialogInterface.OnClickListener() {
+//                                public void onClick(DialogInterface dialog, int which) {
+//                                    dialog.dismiss();
+//                                }
+//                            });
+//                    alertDialog.show();
                 }
             }
         });
@@ -79,8 +86,11 @@ public class NewsFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Ação em Notícias", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+//                Snackbar.make(view, "Ação em Notícias", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+
+                Intent intent = new Intent(getActivity(), SearchNewsActivity.class);
+                startActivity(intent);
             }
         });
 

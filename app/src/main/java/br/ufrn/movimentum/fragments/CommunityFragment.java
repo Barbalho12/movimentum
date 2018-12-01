@@ -19,6 +19,7 @@ import java.util.List;
 
 import br.ufrn.movimentum.MainActivity;
 import br.ufrn.movimentum.R;
+import br.ufrn.movimentum.SearchGroupActivity;
 import br.ufrn.movimentum.ViewGroupActivity;
 import br.ufrn.movimentum.adapters.GroupAdapter;
 import br.ufrn.movimentum.adapters.ItemList;
@@ -80,16 +81,18 @@ public class CommunityFragment extends Fragment {
                     startActivity(intent);
 //                    finish();
                 }else{
-                    AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
-                    alertDialog.setTitle("Alerta");
-                    alertDialog.setMessage("Não implementado");
-                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            });
-                    alertDialog.show();
+                    Snackbar.make(view, "Não implementado", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+//                    AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+//                    alertDialog.setTitle("Alerta");
+//                    alertDialog.setMessage("Não implementado");
+//                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+//                            new DialogInterface.OnClickListener() {
+//                                public void onClick(DialogInterface dialog, int which) {
+//                                    dialog.dismiss();
+//                                }
+//                            });
+//                    alertDialog.show();
                 }
             }
         });
@@ -99,8 +102,10 @@ public class CommunityFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Ação em comunidade", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(getActivity(), SearchGroupActivity.class);
+                startActivity(intent);
+//                Snackbar.make(view, "Ação em comunidade", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
             }
         });
 

@@ -25,6 +25,7 @@ import android.widget.TextView;
 
 import br.ufrn.movimentum.fragments.CommunityFragment;
 import br.ufrn.movimentum.fragments.InitFragment;
+import br.ufrn.movimentum.fragments.NewsFragment;
 import br.ufrn.movimentum.model.UserManager;
 
 import static android.content.ContentValues.TAG;

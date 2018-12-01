@@ -38,6 +38,8 @@ public class NewGroupActivity extends AppCompatActivity {
     private Button bt_time_init_new_group;
     private Button bt_time_end_new_group;
 
+    private Button bt_create_new_group;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,6 +100,17 @@ public class NewGroupActivity extends AppCompatActivity {
                     }
                 }, 0, 0, true);
                 timePickerDialog.show();
+            }
+        });
+
+
+
+        bt_create_new_group = findViewById(R.id.bt_create_new_group);
+        bt_create_new_group.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Não implementado", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
         });
     }
