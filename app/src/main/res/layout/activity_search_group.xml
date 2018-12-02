@@ -49,6 +49,7 @@
                     android:id="@+id/et_search_group"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-thin"
                     android:hint="Assunto do grupo"
                     android:imeOptions="actionDone"
                     android:maxLines="1"
@@ -67,46 +68,56 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-thin"
+                    android:textStyle="bold"
                     android:text="Grupos que contém pessoas que ..."/>
 
                 <CheckBox
                     android:id="@+id/cb_search_op1_group"
                     android:text="São do meu departamento"
+                    android:fontFamily="sans-serif-thin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
                 <CheckBox
                     android:id="@+id/cb_search_op2_group"
                     android:text="Já cursei mesma disciplina"
+                    android:fontFamily="sans-serif-thin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
                 <CheckBox
                     android:id="@+id/cb_search_op3_group"
                     android:text="São iniciantes"
+                    android:fontFamily="sans-serif-thin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-thin"
                     android:text="Grupos oficiais"
+                    android:textStyle="bold"
                     android:layout_marginTop="@dimen/margin_form"/>
 
                 <CheckBox
                     android:id="@+id/cb_search_op4_group"
                     android:text="Possuem acompanhamento médico"
                     android:layout_width="wrap_content"
+                    android:fontFamily="sans-serif-thin"
                     android:layout_height="wrap_content" />
                 <CheckBox
                     android:id="@+id/cb_search_op5_group"
                     android:text="Possuem nutricionista"
                     android:layout_width="wrap_content"
+                    android:fontFamily="sans-serif-thin"
                     android:layout_height="wrap_content" />
                 <CheckBox
                     android:id="@+id/cb_search_op6_group"
                     android:text="Possuem profissional de Educação Física"
                     android:layout_width="wrap_content"
+                    android:fontFamily="sans-serif-thin"
                     android:layout_height="wrap_content" />
 
             </LinearLayout>
@@ -121,7 +132,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Buscar"
+                    android:fontFamily="sans-serif-thin"
                     android:padding="20dp"
+                    android:textStyle="bold"
+                    android:textColor="#fff"
+                    android:background="@color/colorPrimary"
                     android:layout_marginTop="@dimen/margin_form"/>
 
             </LinearLayout>

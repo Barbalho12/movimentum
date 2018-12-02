@@ -101,7 +101,7 @@ public class NewGroupActivity extends AppCompatActivity {
         });
 
         bt_time_init_new_group = findViewById(R.id.bt_time_init_new_group);
-        bt_time_init_new_group.setBackgroundColor(Color.argb(180, 150, 200, 150));
+//        bt_time_init_new_group.setBackgroundColor(Color.argb(180, 150, 200, 150));
         bt_time_init_new_group.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -116,7 +116,7 @@ public class NewGroupActivity extends AppCompatActivity {
         });
 
         bt_time_end_new_group = findViewById(R.id.bt_time_end_new_group);
-        bt_time_end_new_group.setBackgroundColor(Color.argb(180, 200, 150, 150));
+//        bt_time_end_new_group.setBackgroundColor(Color.argb(180, 200, 150, 150));
         bt_time_end_new_group.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

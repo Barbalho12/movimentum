@@ -57,6 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Título do grupo"
+                android:fontFamily="sans-serif-thin"
                 android:imeOptions="actionNext"
                 android:maxLines="1"
                 android:singleLine="true"
@@ -74,6 +75,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Descrição do grupo"
+                android:fontFamily="sans-serif-thin"
                 android:imeOptions="actionDone"
                 android:inputType="textMultiLine"
                 android:maxLines="5"
@@ -135,6 +137,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Capacidade"
+                android:fontFamily="sans-serif-thin"
                 android:imeOptions="actionDone"
                 android:maxLines="1"
                 android:maxLength="3"
@@ -165,6 +168,7 @@
                 android:id="@+id/sp_local_new_group"
                 android:layout_width="match_parent"
                 android:tooltipText="Selecione um lugar"
+                android:fontFamily="sans-serif-thin"
                 android:layout_height="wrap_content"/>
 
 
@@ -178,6 +182,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-thin"
+                android:textStyle="bold"
                 android:text="Intervalo de duração"/>
 
             <LinearLayout
@@ -190,17 +196,21 @@
                     android:id="@+id/bt_time_init_new_group"
                     android:layout_height="wrap_content"
                     android:layout_width="0dp"
+                    android:background="#c7c7c7"
+                    android:fontFamily="sans-serif-thin"
                     android:layout_weight="1"
                     android:layout_centerVertical="true"
-                    android:hint="Hora Inicial" />
+                    android:hint="Horário Inicial" />
 
                 <Button
                     android:id="@+id/bt_time_end_new_group"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="#a3a3a3"
                     android:layout_centerHorizontal="true"
+                    android:fontFamily="sans-serif-thin"
                     android:layout_centerVertical="true"
-                    android:hint="Hora Final"
+                    android:hint="Horário Final"
                     android:layout_width="0dp" />
             </LinearLayout>
 
@@ -209,6 +219,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dias na semana"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-thin"
                 android:layout_marginTop="@dimen/margin_form"/>
 
             <LinearLayout
@@ -220,37 +232,44 @@
                 <CheckBox
                     android:id="@+id/cb_dom_new_group"
                     android:text="D"
+                    android:fontFamily="sans-serif-thin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
                 <CheckBox
                     android:id="@+id/cb_seg_new_group"
                     android:text="S"
+                    android:fontFamily="sans-serif-thin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <CheckBox
                     android:id="@+id/cb_ter_new_group"
                     android:text="T"
+                    android:fontFamily="sans-serif-thin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <CheckBox
                     android:id="@+id/cb_qua_new_group"
                     android:text="Q"
+                    android:fontFamily="sans-serif-thin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <CheckBox
                     android:id="@+id/cb_qui_new_group"
                     android:text="Q"
+                    android:fontFamily="sans-serif-thin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <CheckBox
                     android:id="@+id/cb_sex_new_group"
                     android:text="S"
+                    android:fontFamily="sans-serif-thin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <CheckBox
                     android:id="@+id/cb_sab_new_group"
                     android:text="S"
+                    android:fontFamily="sans-serif-thin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -260,7 +279,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Criar"
+                android:fontFamily="sans-serif-thin"
                 android:padding="20dp"
+                android:textStyle="bold"
+                android:textColor="#fff"
+                android:background="@color/colorPrimary"
                 android:layout_marginTop="@dimen/margin_form"/>
 
         </LinearLayout>
