@@ -1,5 +1,6 @@
 package br.ufrn.movimentum;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.support.design.widget.Snackbar;
@@ -26,6 +27,7 @@ public class ViewGroupActivity extends AppCompatActivity {
 
     private TextView tv_days_group;
     private Button bt_request_participate_group;
+    private Button bt_view_local_group;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,14 @@ public class ViewGroupActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Não implementado", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+            }
+        });
+
+        bt_view_local_group.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -78,6 +88,7 @@ public class ViewGroupActivity extends AppCompatActivity {
         tv_interval_group = findViewById(R.id.tv_interval_group);
         tv_days_group = findViewById(R.id.tv_days_group);
         bt_request_participate_group = findViewById(R.id.bt_request_participate_group);
+        bt_view_local_group = findViewById(R.id.bt_view_local_group);
     }
 
     private void initToolbar() {

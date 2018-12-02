@@ -72,18 +72,45 @@
                 <!--android:layout_marginTop="@dimen/margin_view_group"-->
                 <!--android:text=""/>-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_view_group"
-                android:textStyle="bold"
-                android:text="Local" />
 
-            <TextView
-                android:id="@+id/tv_local_view_group"
+            <LinearLayout
+                android:gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=""/>
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/margin_view_group">
+
+                <LinearLayout
+                    android:gravity="left"
+                    android:layout_weight="0.5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:text="Local" />
+
+                    <TextView
+                        android:id="@+id/tv_local_view_group"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""/>
+
+                </LinearLayout>
+
+                <Button
+                    android:gravity="center_vertical|center"
+                    android:layout_weight="0.5"
+                    android:id="@+id/bt_view_local_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Ver no mapa"/>
+
+            </LinearLayout>
+
 
             <TextView
                 android:layout_width="wrap_content"
