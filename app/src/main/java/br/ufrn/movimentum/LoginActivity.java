@@ -3,6 +3,7 @@ package br.ufrn.movimentum;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -77,14 +78,22 @@ public class LoginActivity extends AppCompatActivity /*implements LoaderCallback
             }
         });
 
-        Button bt_log_esq_senha = (Button) findViewById(R.id.bt_log_esq_senha);
-        bt_log_esq_senha.setOnClickListener(new OnClickListener() {
+        TextView tv_log_esq_senha = findViewById(R.id.tv_log_esq_senha);
+        tv_log_esq_senha.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-//                alert("Função não disponível no momento!");
+                Snackbar.make(v, "Não implementado", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+
+        TextView bt_cadastrar = (TextView) findViewById(R.id.bt_cadastrar);
+        bt_cadastrar.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), CadastrarActivity.class);
                 startActivity(intent);
-                finish();
+//                finish();
             }
         });
 
@@ -103,5 +112,9 @@ public class LoginActivity extends AppCompatActivity /*implements LoaderCallback
         alertDialog.show();
     }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
 }
 

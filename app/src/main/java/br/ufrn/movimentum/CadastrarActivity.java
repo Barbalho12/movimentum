@@ -29,6 +29,7 @@ public class CadastrarActivity extends AppCompatActivity {
     TextView tv_cad_password;
     TextView tv_cad_password_confirm;
     Button bt_cad_cadastrar;
+    TextView bt_back_cad;
 
     // Spinner element
     Spinner sp_cad_role;
@@ -44,6 +45,7 @@ public class CadastrarActivity extends AppCompatActivity {
         tv_cad_password = (TextView) findViewById(R.id.tv_cad_password);
         tv_cad_password_confirm = (TextView) findViewById(R.id.tv_cad_password_confirm);
         bt_cad_cadastrar = (Button) findViewById(R.id.bt_cad_cadastrar);
+        bt_back_cad = findViewById(R.id.bt_back_cad);
         sp_cad_role = (Spinner) findViewById(R.id.sp_cad_role);
 
         userManager = new UserManager(getApplicationContext());
@@ -70,6 +72,13 @@ public class CadastrarActivity extends AppCompatActivity {
                     }
                 }
 
+            }
+        });
+
+        bt_back_cad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
 
@@ -118,4 +127,11 @@ public class CadastrarActivity extends AppCompatActivity {
                 });
         alertDialog.show();
     }
+
+//    @Override
+//    public void onBackPressed() {
+//        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+//        startActivity(intent);
+//        finish();
+//    }
 }

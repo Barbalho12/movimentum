@@ -17,6 +17,7 @@ public class StartActivity extends AppCompatActivity {
         }else{
             Intent intent = new Intent(StartActivity.this, LoginActivity.class);
             startActivity(intent);
+            finish();
         }
     }
 
@@ -36,5 +37,10 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         verifySession();
         super.onCreate(savedInstanceState);
+
     }
+
+
+
+
 }

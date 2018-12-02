@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".SearchNewsActivity">
+<!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--tools:context=".SearchNewsActivity">-->
 
-    <LinearLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:context=".SearchNewsActivity">
 
         <android.support.design.widget.AppBarLayout
             android:id="@+id/appbar_search_news"
@@ -32,7 +35,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="10dp">
 
@@ -49,6 +52,7 @@
                     android:hint="Assunto da Notícia"
                     android:imeOptions="actionDone"
                     android:maxLines="1"
+                    android:inputType="text"
                     android:singleLine="true"
                     tools:ignore="InvalidImeActionId" />
 
@@ -98,15 +102,23 @@
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/bt_search_news"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Buscar"
-                android:padding="20dp"
-                android:layout_marginTop="@dimen/margin_form"/>
+                android:layout_height="match_parent"
+                android:gravity="bottom">
+
+                <Button
+                    android:id="@+id/bt_search_news"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Buscar"
+                    android:padding="20dp"
+                    android:layout_marginTop="@dimen/margin_form"/>
+
+            </LinearLayout>
+
 
         </LinearLayout>
     </LinearLayout>
 
-</ScrollView>
+<!--</ScrollView>-->
