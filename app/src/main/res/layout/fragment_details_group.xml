@@ -153,6 +153,53 @@
                     <!--android:textColor="#fff"-->
                     <!--android:text="Solicitar Participar" />-->
 
+                <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:id="@+id/grid_users_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:columnCount="4"
+                    android:layout_gravity="center"
+                    tools:context=".GridLayoutActivity" >
+
+                    <!--<Button-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="Button"-->
+                        <!--android:layout_margin="7dp"/>-->
+
+                    <!--<Button-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="Button"-->
+                        <!--android:layout_margin="7dp"/>-->
+
+                    <!--<Button-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="Button"-->
+                        <!--android:layout_margin="7dp"/>-->
+
+                    <!--<Button-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="Button"-->
+                        <!--android:layout_margin="7dp"/>-->
+
+                    <!--<Button-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="Button"-->
+                        <!--android:layout_margin="7dp"/>-->
+
+                    <!--<Button-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="Button"-->
+                        <!--android:layout_margin="7dp"/>-->
+
+                </GridLayout>
+
             </LinearLayout>
 
         </LinearLayout>
