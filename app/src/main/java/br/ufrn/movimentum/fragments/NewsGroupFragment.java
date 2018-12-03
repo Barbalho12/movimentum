@@ -18,9 +18,11 @@ import java.util.List;
 
 import br.ufrn.movimentum.NewGroupActivity;
 import br.ufrn.movimentum.R;
+import br.ufrn.movimentum.SearchNewsActivity;
 import br.ufrn.movimentum.ViewMyGroupActivity;
 import br.ufrn.movimentum.adapters.GroupAdapter;
 import br.ufrn.movimentum.adapters.ItemList;
+import br.ufrn.movimentum.adapters.NewsAdapter;
 
 
 public class NewsGroupFragment extends Fragment {
@@ -49,6 +51,45 @@ public class NewsGroupFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_news_group, container, false);
+
+        ListView listview = (ListView) rootView.findViewById(R.id.listview_news_group);
+        List<ItemNews> list_itens = new ArrayList<>();
+        list_itens.add(new ItemNews(1, "Cancelamento do treino de hoje", "28/10/2018", "16h40"));
+
+        NewsAdapter newsAdapter = new NewsAdapter(list_itens, getActivity());
+        listview.setAdapter(newsAdapter);
+//        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view,
+//                                    int position, long id) {
+////                Toast.makeText(getApplicationContext(),
+////                        "Clicou no item " + position, Toast.LENGTH_LONG).show();
+//                if(position==0){
+//                    Snackbar.make(view, "Não implementado", Snackbar.LENGTH_LONG)
+//                            .setAction("Action", null).show();
+////                    Intent intent = new Intent(getActivity(), SearchNewsActivity.class);
+////                    startActivity(intent);
+//////                    finish();
+//                }else{
+//                    Snackbar.make(view, "Não implementado", Snackbar.LENGTH_LONG)
+//                            .setAction("Action", null).show();
+//                }
+//            }
+//        });
+
+        FloatingActionButton fab = rootView.findViewById(R.id.fab_news_group);
+        String pathName = "android.resource://"+getActivity().getPackageName()+"/";
+        fab.setImageURI(Uri.parse(pathName+R.drawable.add));
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Não Implementado", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+
+//                Intent intent = new Intent(getActivity(), SearchNewsActivity.class);
+//                startActivity(intent);
+            }
+        });
 
         return rootView;
     }
