@@ -1,6 +1,7 @@
 package br.ufrn.movimentum.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -18,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import br.ufrn.movimentum.MapsActivity;
 import br.ufrn.movimentum.R;
 import br.ufrn.movimentum.utils.RoundImage;
 
@@ -32,8 +34,9 @@ public class DetailsGroupFragment extends Fragment {
     private TextView tv_interval_my_group;
     private TextView tv_days_my_group;
     private GridLayout grid_users_group;
-    private Button bt_request_participate_my_group;
+//    private Button bt_request_participate_my_group;
     private Button bt_view_local_my_group;
+//    private TextView tv_desc_view_my_group;
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -59,6 +62,14 @@ public class DetailsGroupFragment extends Fragment {
         initViewWidgets(rootView);
         setValuesDefault(rootView);
 
+        bt_view_local_my_group.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), MapsActivity.class);
+                startActivity(intent);
+            }
+        });
+
         return rootView;
     }
 
@@ -67,6 +78,7 @@ public class DetailsGroupFragment extends Fragment {
         String desc = "Este grupo é destinado para pessoas que curtem praticar corrida regulamente, " +
                 "com a finalidade principal de buscar saúde e qualidade de vida. Para auxiliar cada " +
                 "membro, um profissinal de educação física tem disponibilidade para retirar dúvidas.";
+//        tv_desc_view_my_group.setText(desc);
         WebView wv_view_my_group = rootView.findViewById(R.id.wv_view_my_group);
         wv_view_my_group.setVerticalScrollBarEnabled(false);
         String descHTML =  "<html><body style='text-align:justify;color:gray;'>  "+desc+" </body></html>";
@@ -85,53 +97,23 @@ public class DetailsGroupFragment extends Fragment {
         tv_capacity_view_my_group.setTextColor(Color.rgb(80,170,80));
 
 
-//        grid_users_group.removeAllViews();
-//
-//        int total = 10;
-//        int column = 3;
-//        int row = total / column;
-//        grid_users_group.setColumnCount(column);
-//        grid_users_group.setRowCount(row + 1);
-//        for (int i = 0, c = 0, r = 0; i < total; i++, c++) {
-//            if (c == column) {
-//                c = 0;
-//                r++;
-//            }
-//            ImageView oImageView = new ImageView(rootView.getContext());
-//            oImageView.setImageResource(R.drawable.boy);
-//
-//            oImageView.setLayoutParams(new ViewGroup.LayoutParams(20, 20));
-//
-//            GridLayout.Spec rowSpan = GridLayout.spec(GridLayout.UNDEFINED, 1);
-//            GridLayout.Spec colspan = GridLayout.spec(GridLayout.UNDEFINED, 1);
-//            if (r == 0 && c == 0) {
-//                Log.e("", "spec");
-//                colspan = GridLayout.spec(GridLayout.UNDEFINED, 2);
-//                rowSpan = GridLayout.spec(GridLayout.UNDEFINED, 2);
-//            }
-//            GridLayout.LayoutParams gridParam = new GridLayout.LayoutParams(rowSpan, colspan);
-//            grid_users_group.addView(oImageView, gridParam);
-//
-//
-//        }
-
-        grid_users_group.addView(createImageView(R.drawable.boy));
-        grid_users_group.addView(createImageView(R.drawable.boy));
-        grid_users_group.addView(createImageView(R.drawable.boy));
-        grid_users_group.addView(createImageView(R.drawable.boy));
-        grid_users_group.addView(createImageView(R.drawable.boy));
-        grid_users_group.addView(createImageView(R.drawable.boy));
-        grid_users_group.addView(createImageView(R.drawable.boy));
-        grid_users_group.addView(createImageView(R.drawable.boy));
-        grid_users_group.addView(createImageView(R.drawable.boy));
-        grid_users_group.addView(createImageView(R.drawable.boy));
-        grid_users_group.addView(createImageView(R.drawable.boy));
-        grid_users_group.addView(createImageView(R.drawable.boy));
-        grid_users_group.addView(createImageView(R.drawable.boy));
-        grid_users_group.addView(createImageView(R.drawable.boy));
-        grid_users_group.addView(createImageView(R.drawable.boy));
-        grid_users_group.addView(createImageView(R.drawable.boy));
-        grid_users_group.addView(createImageView(R.drawable.boy));
+        grid_users_group.addView(createImageView(R.drawable.boy1));
+        grid_users_group.addView(createImageView(R.drawable.boy2));
+        grid_users_group.addView(createImageView(R.drawable.boy3));
+        grid_users_group.addView(createImageView(R.drawable.boy4));
+        grid_users_group.addView(createImageView(R.drawable.boy5));
+        grid_users_group.addView(createImageView(R.drawable.boy6));
+        grid_users_group.addView(createImageView(R.drawable.boy7));
+        grid_users_group.addView(createImageView(R.drawable.boy8));
+        grid_users_group.addView(createImageView(R.drawable.boy9));
+        grid_users_group.addView(createImageView(R.drawable.boy10));
+        grid_users_group.addView(createImageView(R.drawable.boy11));
+        grid_users_group.addView(createImageView(R.drawable.boy12));
+        grid_users_group.addView(createImageView(R.drawable.boy13));
+        grid_users_group.addView(createImageView(R.drawable.boy14));
+        grid_users_group.addView(createImageView(R.drawable.boy15));
+        grid_users_group.addView(createImageView(R.drawable.boy16));
+        grid_users_group.addView(createImageView(R.drawable.boy17));
 
     }
 
@@ -144,6 +126,7 @@ public class DetailsGroupFragment extends Fragment {
         tv_days_my_group = rootView.findViewById(R.id.tv_days_my_group);
         bt_view_local_my_group = rootView.findViewById(R.id.bt_view_local_my_group);
         grid_users_group = rootView.findViewById(R.id.grid_users_group);
+//        tv_desc_view_my_group = rootView.findViewById(R.id.tv_desc_view_my_group);
     }
 
     private ImageView createImageView(int resId){
@@ -153,7 +136,7 @@ public class DetailsGroupFragment extends Fragment {
         lp.width = 120;
         ImageView imageView1 = new ImageView(getActivity());
         RoundImage roundedImage;
-        Bitmap bm = BitmapFactory.decodeResource(getResources(),  R.drawable.boy);
+        Bitmap bm = BitmapFactory.decodeResource(getResources(),  resId);
         roundedImage = new RoundImage(bm);
         imageView1.setImageDrawable(roundedImage);
         imageView1.setLayoutParams(lp);
