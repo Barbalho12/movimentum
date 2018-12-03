@@ -21,6 +21,7 @@ import br.ufrn.movimentum.MainActivity;
 import br.ufrn.movimentum.NewGroupActivity;
 import br.ufrn.movimentum.R;
 import br.ufrn.movimentum.ViewGroupActivity;
+import br.ufrn.movimentum.ViewMyGroupActivity;
 import br.ufrn.movimentum.adapters.GroupAdapter;
 import br.ufrn.movimentum.adapters.ItemList;
 
@@ -28,11 +29,11 @@ import br.ufrn.movimentum.adapters.ItemList;
 public class InitFragment extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
-//
-//    /**
-//     * Returns a new instance of this fragment for the given section
-//     * number.
-//     */
+
+    /**
+     * Returns a new instance of this fragment for the given section
+     * number.
+     */
     public static InitFragment newInstance(int sectionNumber) {
         InitFragment fragment = new InitFragment();
         Bundle args = new Bundle();
@@ -41,7 +42,6 @@ public class InitFragment extends Fragment {
         return fragment;
     }
 
-    // Store instance variables based on arguments passed
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,24 +69,12 @@ public class InitFragment extends Fragment {
 //                Toast.makeText(getApplicationContext(),
 //                        "Clicou no item " + position, Toast.LENGTH_LONG).show();
                 if(position==0){
-                    Snackbar.make(view, "Não implementado", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-//                    Intent intent = new Intent(getActivity(), ViewGroupActivity.class);
-//                    startActivity(intent);
+                    Intent intent = new Intent(getActivity(), ViewMyGroupActivity.class);
+                    startActivity(intent);
 
                 }else{
                     Snackbar.make(view, "Não implementado", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
-//                    AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
-//                    alertDialog.setTitle("Alerta");
-//                    alertDialog.setMessage("Não implementado");
-//                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-//                            new DialogInterface.OnClickListener() {
-//                                public void onClick(DialogInterface dialog, int which) {
-//                                    dialog.dismiss();
-//                                }
-//                            });
-//                    alertDialog.show();
                 }
             }
         });
@@ -97,14 +85,9 @@ public class InitFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), NewGroupActivity.class);
                 startActivity(intent);
-//                finish();
-
-//                Snackbar.make(view, "Ação em Início", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
             }
         });
 
         return rootView;
     }
-
 }

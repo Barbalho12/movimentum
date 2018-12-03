@@ -20,11 +20,9 @@ public class ViewGroupActivity extends AppCompatActivity {
 
     private ImageView iv_image_view_group;
     private TextView tv_title_view_group;
-//    private TextView tv_descript_view_group;
     private TextView tv_capacity_view_group;
     private TextView tv_local_view_group;
     private TextView tv_interval_group;
-
     private TextView tv_days_group;
     private Button bt_request_participate_group;
     private Button bt_view_local_group;
