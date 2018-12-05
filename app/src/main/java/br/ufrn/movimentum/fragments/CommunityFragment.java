@@ -86,24 +86,6 @@ public class CommunityFragment extends Fragment {
                 intent.putExtra("group",list_itens.get(position));
 
                 startActivity(intent);
-//                if(position==0){
-//                    Intent intent = new Intent(getActivity(), ViewGroupActivity.class);
-//                    startActivity(intent);
-////                    finish();
-//                }else{
-//                    Snackbar.make(view, "Não implementado", Snackbar.LENGTH_LONG)
-//                            .setAction("Action", null).show();
-//                    AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
-//                    alertDialog.setTitle("Alerta");
-//                    alertDialog.setMessage("Não implementado");
-//                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-//                            new DialogInterface.OnClickListener() {
-//                                public void onClick(DialogInterface dialog, int which) {
-//                                    dialog.dismiss();
-//                                }
-//                            });
-//                    alertDialog.show();
-//                }
             }
         });
 

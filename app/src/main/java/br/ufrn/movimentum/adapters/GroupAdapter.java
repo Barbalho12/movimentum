@@ -56,7 +56,7 @@ public class GroupAdapter extends BaseAdapter {
         ImageView groupPicture = (ImageView) view.findViewById(R.id.iv_group_img);
 
         groupName.setText(item_list.getGroupName());
-        groupLocal.setText(item_list.getGroupName());
+        groupLocal.setText(item_list.getGroupLocal().getName());
         groupSchedule.setText(item_list.getGroupSchedule());
         groupTime.setText(item_list.getGroupTime());
         groupPicture.setImageURI(Uri.parse(item_list.getGroupPicturePath()));

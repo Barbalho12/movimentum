@@ -84,7 +84,7 @@ public class ViewGroupActivity extends AppCompatActivity {
         iv_image_view_group.setImageURI(uri);
         tv_title_view_group.setText(group.getGroupName());
         tv_local_view_group.setText(group.getGroupLocal().getName());
-        tv_interval_group.setText(group.getGroupLocal().getName());
+        tv_interval_group.setText(group.getGroupTime());
         tv_days_group.setText(group.getGroupSchedule());
         tv_capacity_view_group.setText(userManager.userInGroup(group).size()+"/"+group.getCapacity());
         tv_capacity_view_group.setTextColor(Color.rgb(80,170,80));
