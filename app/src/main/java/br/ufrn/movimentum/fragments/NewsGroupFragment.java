@@ -1,7 +1,5 @@
 package br.ufrn.movimentum.fragments;
 
-import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -10,19 +8,16 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import br.ufrn.movimentum.NewGroupActivity;
+import br.ufrn.movimentum.InicialAllActivity;
 import br.ufrn.movimentum.R;
-import br.ufrn.movimentum.SearchNewsActivity;
-import br.ufrn.movimentum.ViewMyGroupActivity;
-import br.ufrn.movimentum.adapters.GroupAdapter;
-import br.ufrn.movimentum.adapters.ItemList;
 import br.ufrn.movimentum.adapters.NewsAdapter;
+import br.ufrn.movimentum.model.GlobalNews;
+import br.ufrn.movimentum.model.News;
 
 
 public class NewsGroupFragment extends Fragment {
@@ -53,10 +48,12 @@ public class NewsGroupFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_news_group, container, false);
 
         ListView listview = (ListView) rootView.findViewById(R.id.listview_news_group);
-        List<ItemNews> list_itens = new ArrayList<>();
-        list_itens.add(new ItemNews(1, "Cancelamento do treino de hoje", "28/10/2018", "16h40"));
 
-        NewsAdapter newsAdapter = new NewsAdapter(list_itens, getActivity());
+        List<News> news = InicialAllActivity.userManager.getActiveGroup().getListNews();
+//        List<News> list_itens = new ArrayList<>();
+//        list_itens.add(new ItemNews(1, "Cancelamento do treino de hoje", "28/10/2018", "16h40"));
+
+        NewsAdapter newsAdapter = new NewsAdapter(news, getActivity());
         listview.setAdapter(newsAdapter);
 //        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override

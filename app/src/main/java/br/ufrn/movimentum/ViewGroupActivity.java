@@ -14,6 +14,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import br.ufrn.movimentum.model.Group;
+import br.ufrn.movimentum.model.UserManager;
+
 import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
 
 public class ViewGroupActivity extends AppCompatActivity {
@@ -27,14 +30,24 @@ public class ViewGroupActivity extends AppCompatActivity {
     private Button bt_request_participate_group;
     private Button bt_view_local_group;
 
+    private UserManager userManager;
+
+    private Group group;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_group);
 
+        Intent myIntent = getIntent(); // gets the previously created intent
+        group = (Group) myIntent.getSerializableExtra("group");
+
+        userManager = new UserManager(getApplicationContext());
+
         initToolbar();
         initViewWidgets();
-        setValuesDefault();
+//        setValuesDefault();
+        setValues(group);
 
         bt_request_participate_group.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +66,33 @@ public class ViewGroupActivity extends AppCompatActivity {
         });
     }
 
+    private void setValues(Group group) {
+
+        String desc = group.getGroupDescription();
+        WebView wv_view_group = findViewById(R.id.wv_view_group);
+        wv_view_group.setVerticalScrollBarEnabled(false);
+        String descHTML =  "<html><body style='text-align:justify;color:gray;'>  "+desc+" </body></html>";
+        wv_view_group.loadData(descHTML,"text/html","utf-8");
+        wv_view_group.setBackgroundColor(Color.TRANSPARENT);
+        wv_view_group.setLayerType(WebView.LAYER_TYPE_SOFTWARE, null);
+        //tv_descript_view_group.setText(desc);
+
+//        String pathName = "android.resource://"+getPackageName()+"/";
+//        Uri uri = Uri.parse(pathName+R.drawable.running_group);
+
+        Uri uri = Uri.parse(group.getGroupPicturePath());
+        iv_image_view_group.setImageURI(uri);
+        tv_title_view_group.setText(group.getGroupName());
+        tv_local_view_group.setText(group.getGroupLocal().getName());
+        tv_interval_group.setText(group.getGroupLocal().getName());
+        tv_days_group.setText(group.getGroupSchedule());
+        tv_capacity_view_group.setText(userManager.userInGroup(group).size()+"/"+group.getCapacity());
+        tv_capacity_view_group.setTextColor(Color.rgb(80,170,80));
+        //tv_descript_view_group.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
+    }
+
     private void setValuesDefault() {
+
         String desc = "Este grupo é destinado para pessoas que curtem praticar corrida regulamente, " +
                 "com a finalidade principal de buscar saúde e qualidade de vida. Para auxiliar cada " +
                 "membro, um profissinal de educação física tem disponibilidade para retirar dúvidas.";

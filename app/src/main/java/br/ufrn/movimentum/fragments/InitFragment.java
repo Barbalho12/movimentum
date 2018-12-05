@@ -1,7 +1,5 @@
 package br.ufrn.movimentum.fragments;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -17,13 +15,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.ufrn.movimentum.InicialAllActivity;
-import br.ufrn.movimentum.MainActivity;
 import br.ufrn.movimentum.NewGroupActivity;
 import br.ufrn.movimentum.R;
-import br.ufrn.movimentum.ViewGroupActivity;
 import br.ufrn.movimentum.ViewMyGroupActivity;
 import br.ufrn.movimentum.adapters.GroupAdapter;
-import br.ufrn.movimentum.adapters.ItemList;
+import br.ufrn.movimentum.model.Group;
+import br.ufrn.movimentum.model.User;
 
 
 public class InitFragment extends Fragment {
@@ -55,11 +52,14 @@ public class InitFragment extends Fragment {
 
         ListView listview = (ListView) rootView.findViewById(R.id.listview);
 
-        List<ItemList> list_itens = new ArrayList<>();
+        List<Group> list_itens = new ArrayList<>();
         String pathName = "android.resource://"+getActivity().getPackageName()+"/";
 
-        list_itens.add(new ItemList(1, "Corrida Livre", "Em torno da UFRN", "qui,sex", "18h00-19h00", pathName+R.drawable.running_group));
-        list_itens.add(new ItemList(2, "Natação 2", "UFRN - Piscina 2", "seg,qua", "08h00-09h00", pathName+R.drawable.swimming_group));
+        User user = InicialAllActivity.userManager.getActiveUser();
+        List<Group> groups = user.getGroups();
+        list_itens.addAll(groups);
+//        list_itens.add(new Group(1, "Corrida Livre", "Em torno da UFRN", "qui,sex", "18h00-19h00", pathName+R.drawable.running_group));
+//        list_itens.add(new Group(2, "Natação 2", "UFRN - Piscina 2", "seg,qua", "08h00-09h00", pathName+R.drawable.swimming_group));
 
         GroupAdapter groupAdapter = new GroupAdapter(list_itens, getActivity());
         listview.setAdapter(groupAdapter);
@@ -68,14 +68,18 @@ public class InitFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 //                Toast.makeText(getApplicationContext(),
 //                        "Clicou no item " + position, Toast.LENGTH_LONG).show();
-                if(position==0){
+//                if(position==0){
+//
+//                }
+//                    InicialAllActivity.userManager.setActiveGroup((Group)parent.getItemAtPosition(position));
+                    InicialAllActivity.userManager.setActiveGroup((Group)parent.getItemAtPosition(position));
                     Intent intent = new Intent(getActivity(), ViewMyGroupActivity.class);
                     startActivity(intent);
 
-                }else{
-                    Snackbar.make(view, "Não implementado", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                }
+//                }else{
+//                    Snackbar.make(view, "Não implementado", Snackbar.LENGTH_LONG)
+//                            .setAction("Action", null).show();
+//                }
             }
         });
 

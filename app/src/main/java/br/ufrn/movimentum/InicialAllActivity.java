@@ -35,7 +35,7 @@ public class InicialAllActivity extends AppCompatActivity implements NavigationV
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
-    private UserManager userManager;
+    public static UserManager userManager;
 
     private NavigationView navigationView;
 
@@ -46,6 +46,8 @@ public class InicialAllActivity extends AppCompatActivity implements NavigationV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all);
+
+        userManager = new UserManager(getApplicationContext());
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -59,7 +61,7 @@ public class InicialAllActivity extends AppCompatActivity implements NavigationV
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        userManager = new UserManager(getApplicationContext());
+
         View header = navigationView.getHeaderView(0);
         tv_user_name_nav = (TextView) header.findViewById(R.id.tv_user_name_nav);
         tv_user_role_nav= (TextView) header.findViewById(R.id.tv_user_role_nav);

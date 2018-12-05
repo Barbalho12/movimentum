@@ -53,7 +53,7 @@
             android:layout_marginTop="@dimen/margin_form">
 
             <EditText
-                android:id="@+id/tv_title_new_group"
+                android:id="@+id/et_title_new_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Título do grupo"
@@ -71,7 +71,7 @@
             android:layout_marginTop="@dimen/margin_form">
 
             <EditText
-                android:id="@+id/tv_descript_new_group"
+                android:id="@+id/et_descript_new_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Descrição do grupo"
@@ -133,7 +133,7 @@
             android:layout_marginTop="@dimen/margin_form">
 
             <EditText
-                android:id="@+id/tv_capacity_new_group"
+                android:id="@+id/et_capacity_new_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Capacidade"

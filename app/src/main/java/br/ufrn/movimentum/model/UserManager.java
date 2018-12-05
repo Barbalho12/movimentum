@@ -22,13 +22,17 @@ import static android.content.ContentValues.TAG;
 public class UserManager implements Serializable {
 
     private List<User> users;
+    private List<Group> groups;
+    private List<GlobalNews> globalNews;
     private final String fileName = "UserManager_save.txt";
 
-
     private User activeUser;
+    private Group activeGroup;
 
     public UserManager(Context context){
         users = new ArrayList<>();
+        groups = new ArrayList<>();
+        globalNews = new ArrayList<>();
         try{
             load(context,fileName);
         }catch (Exception erro){
@@ -36,9 +40,23 @@ public class UserManager implements Serializable {
         }
     }
 
+    public boolean addGroup(Group group, Context context){
+        if(!groups.contains(group)){
+            groups.add(group);
+            activeUser.addGroup(group);
+
+//            activeUser = user;
+            Log.v(TAG, group.getGroupName()+" Salvo ");
+            boolean sucess = save(context, fileName, this);
+            return sucess;
+        }
+        return false;
+    }
+
 
     public boolean addUser(User user, Context context){
         if(!users.contains(user)){
+
             users.add(user);
             activeUser = user;
             Log.v(TAG, user.getNome()+" Salvo ");
@@ -54,7 +72,9 @@ public class UserManager implements Serializable {
             ObjectInputStream is = new ObjectInputStream(fis);
             UserManager userManager = (UserManager) is.readObject();
             this.users = userManager.getUsers();
+            this.groups = userManager.getGroups();
             this.activeUser = userManager.getActiveUser();
+            this.globalNews = userManager.getGlobalNews();
             is.close();
             fis.close();
             Log.v(TAG, "Lido ");
@@ -74,6 +94,18 @@ public class UserManager implements Serializable {
 
     public void save(Context context) {
         save(context, fileName, this);
+    }
+
+    public boolean requestUser(Context context, String email, String senha) {
+        for(User user : users){
+            Log.v(TAG, email+"=="+user.getEmail()+", "+senha+"=="+user.getSenha());
+            if(user.getEmail().equals(email) && user.getSenha().equals(senha)){
+                activeUser = user;
+                save(context, fileName, this);
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean save(Context context, String fileName, UserManager userManager) {
@@ -97,8 +129,17 @@ public class UserManager implements Serializable {
 
     }
 
+    public void setInActiveUser(Context context) {
+        this.activeUser = null;
+        save(context, fileName, this);
+    }
+
     public List<User> getUsers() {
         return users;
+    }
+
+    public List<Group> getGroups() {
+        return groups;
     }
 
     public void setUsers(List<User> users) {
@@ -109,24 +150,36 @@ public class UserManager implements Serializable {
         return activeUser;
     }
 
-    public void setInActiveUser(Context context) {
-        this.activeUser = null;
-        save(context, fileName, this);
-    }
+
 
     public void setActiveUser(User activeUser) {
         this.activeUser = activeUser;
     }
 
-    public boolean requestUser(Context context, String email, String senha) {
-        for(User user : users){
-            Log.v(TAG, email+"=="+user.getEmail()+", "+senha+"=="+user.getSenha());
-            if(user.getEmail().equals(email) && user.getSenha().equals(senha)){
-                activeUser = user;
-                save(context, fileName, this);
-                return true;
+    public List<User> userInGroup(Group group){
+        List<User> usGrs = new ArrayList<>();
+        for(User u: users){
+            if(u.getGroups().contains(group)){
+                usGrs.add(u);
             }
         }
-        return false;
+        return usGrs;
+    }
+
+
+    public List<GlobalNews> getGlobalNews() {
+        return globalNews;
+    }
+
+    public void setGlobalNews(List<GlobalNews> globalNews) {
+        this.globalNews = globalNews;
+    }
+
+    public Group getActiveGroup() {
+        return activeGroup;
+    }
+
+    public void setActiveGroup(Group activeGroup) {
+        this.activeGroup = activeGroup;
     }
 }

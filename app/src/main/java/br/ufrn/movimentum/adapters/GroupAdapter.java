@@ -12,6 +12,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import br.ufrn.movimentum.R;
+import br.ufrn.movimentum.model.Group;
 
 /**
  * Created by Barreto on 22/11/2017.
@@ -19,10 +20,10 @@ import br.ufrn.movimentum.R;
 
 public class GroupAdapter extends BaseAdapter {
 
-    private final List<ItemList> list_itens;
+    private final List<Group> list_itens;
     private final Activity activity;
 
-    public GroupAdapter(List<ItemList> list_itens, Activity activity) {
+    public GroupAdapter(List<Group> list_itens, Activity activity) {
         this.list_itens = list_itens;
         this.activity = activity;
     }
@@ -46,7 +47,7 @@ public class GroupAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         View view = activity.getLayoutInflater().inflate(R.layout.list_item, parent, false);
-        ItemList item_list = list_itens.get(position);
+        Group item_list = list_itens.get(position);
 //
         TextView groupName = (TextView) view.findViewById(R.id.tv_group_name);
         TextView groupLocal = (TextView) view.findViewById(R.id.tv_group_local);
@@ -55,7 +56,7 @@ public class GroupAdapter extends BaseAdapter {
         ImageView groupPicture = (ImageView) view.findViewById(R.id.iv_group_img);
 
         groupName.setText(item_list.getGroupName());
-        groupLocal.setText(item_list.getGroupLocal());
+        groupLocal.setText(item_list.getGroupName());
         groupSchedule.setText(item_list.getGroupSchedule());
         groupTime.setText(item_list.getGroupTime());
         groupPicture.setImageURI(Uri.parse(item_list.getGroupPicturePath()));
