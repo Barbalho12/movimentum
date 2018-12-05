@@ -4,11 +4,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.ufrn.movimentum.R;
+
 public class User implements Serializable {
     private String nome;
     private String email;
     private String role;
     private String senha;
+    private String groupPicturePath;
     private List<Group> groups;
 
 
@@ -17,6 +20,7 @@ public class User implements Serializable {
         this.email = email;
         this.senha = senha;
         this.groups = new ArrayList<>();
+        this.groupPicturePath = "R.drawable.boy1";
     }
 
     public User(String nome, String email, String senha, String role) {
@@ -25,6 +29,16 @@ public class User implements Serializable {
         this.senha = senha;
         this.role = role;
         this.groups = new ArrayList<>();
+//        this.groupPicturePath = "R.drawable.boy1";
+    }
+
+    public User(String nome, String email, String senha, String role, String groupPicturePath) {
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.role = role;
+        this.groups = new ArrayList<>();
+        this.groupPicturePath = groupPicturePath;
     }
 
 
@@ -91,5 +105,13 @@ public class User implements Serializable {
 
     public void addGroup(Group group) {
         groups.add(group);
+    }
+
+    public String getGroupPicturePath() {
+        return groupPicturePath;
+    }
+
+    public void setGroupPicturePath(String groupPicturePath) {
+        this.groupPicturePath = groupPicturePath;
     }
 }

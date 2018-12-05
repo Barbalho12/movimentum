@@ -45,6 +45,8 @@ public class InitFragment extends Fragment {
 
     }
 
+    List<Group> list_itens;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -52,7 +54,7 @@ public class InitFragment extends Fragment {
 
         ListView listview = (ListView) rootView.findViewById(R.id.listview);
 
-        List<Group> list_itens = new ArrayList<>();
+        list_itens = new ArrayList<>();
         String pathName = "android.resource://"+getActivity().getPackageName()+"/";
 
         User user = InicialAllActivity.userManager.getActiveUser();
@@ -74,6 +76,7 @@ public class InitFragment extends Fragment {
 //                    InicialAllActivity.userManager.setActiveGroup((Group)parent.getItemAtPosition(position));
                     InicialAllActivity.userManager.setActiveGroup((Group)parent.getItemAtPosition(position));
                     Intent intent = new Intent(getActivity(), ViewMyGroupActivity.class);
+                    intent.putExtra("group",list_itens.get(position));
                     startActivity(intent);
 
 //                }else{

@@ -62,6 +62,7 @@ public class CommunityFragment extends Fragment {
 
         List<Group> groups = InicialAllActivity.userManager.getGroups();
         list_itens.addAll(groups);
+
 //        list_itens.add(new Group(1, "Corrida Livre", "Em torno da UFRN", "qui,sex", "18h00-19h00", pathName+R.drawable.running_group));
 //        list_itens.add(new Group(2, "Natação 2", "UFRN - Piscina 2", "seg,qua", "08h00-09h00", pathName+R.drawable.swimming_group));
 //        list_itens.add(new Group(3, "Time de Atletismo", "UFRN - Pista de Atletismo", "seg,qua,sex", "17h00-18h30", pathName+R.drawable.atletism_group));

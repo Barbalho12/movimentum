@@ -3,6 +3,7 @@ package br.ufrn.movimentum.model;
 import android.content.Context;
 import android.util.Log;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -108,9 +109,28 @@ public class UserManager implements Serializable {
         return false;
     }
 
+    public boolean persiste(Context context) {
+        try {
+            boolean sucess = save(context, fileName, this);
+            return sucess;
+       } catch (Exception e) {
+            Log.v(TAG, "Error salvar");
+            e.printStackTrace();
+        }
+        return false;
+
+    }
+
+    public boolean isStart(){
+        File file = new File(fileName);
+        return file.exists();
+    }
+
     public boolean save(Context context, String fileName, UserManager userManager) {
 
-        try {
+
+
+            try {
             FileOutputStream fos = context.openFileOutput(fileName, Context.MODE_PRIVATE);
             ObjectOutputStream os = new ObjectOutputStream(fos);
             os.writeObject(userManager);
@@ -181,5 +201,9 @@ public class UserManager implements Serializable {
 
     public void setActiveGroup(Group activeGroup) {
         this.activeGroup = activeGroup;
+    }
+
+    public void setGroups(List<Group> groups) {
+        this.groups = groups;
     }
 }

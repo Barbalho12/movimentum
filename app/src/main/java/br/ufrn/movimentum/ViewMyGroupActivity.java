@@ -26,6 +26,7 @@ import br.ufrn.movimentum.fragments.DetailsGroupFragment;
 import br.ufrn.movimentum.fragments.InitFragment;
 import br.ufrn.movimentum.fragments.NewsFragment;
 import br.ufrn.movimentum.fragments.NewsGroupFragment;
+import br.ufrn.movimentum.model.Group;
 import br.ufrn.movimentum.model.UserManager;
 
 import static android.content.ContentValues.TAG;
@@ -36,10 +37,15 @@ public class ViewMyGroupActivity extends AppCompatActivity {
     private ViewPager mViewPager;
 //    private NavigationView navigationView;
 
+    private Group group;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_my_group);
+
+        Intent myIntent = getIntent(); // gets the previously created intent
+        group = (Group) myIntent.getSerializableExtra("group");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_my_group);
         setSupportActionBar(toolbar);
@@ -68,16 +74,6 @@ public class ViewMyGroupActivity extends AppCompatActivity {
 //        View header = navigationView.getHeaderView(0);
 //        tv_user_name_nav = (TextView) header.findViewById(R.id.tv_user_name_nav);
 //        tv_user_role_nav= (TextView) header.findViewById(R.id.tv_user_role_nav);
-
-//        if (userManager.getActiveUser() != null) {
-//            navigationView.getMenu().getItem(0).setTitle("Exercícios Realizados: " + userManager.getActiveUser().getNumberExercRealizados());
-//            navigationView.getMenu().getItem(1).setTitle("Exercícios vizualizados: " + userManager.getActiveUser().getNumberExercVistos());
-//            navigationView.getMenu().getItem(2).setTitle("Kanjis Vistos: " + userManager.getActiveUser().getKanjis_vistos());
-//        } else {
-//            navigationView.getMenu().getItem(0).setTitle("Exercícios Realizados: x");
-//            navigationView.getMenu().getItem(1).setTitle("Exercícios vizualizados: x");
-//            navigationView.getMenu().getItem(2).setTitle("Kanjis Vistos: x");
-//        }
 
 
 //        if (userManager.getActiveUser() != null && tv_user_name_nav != null) {
@@ -109,9 +105,9 @@ public class ViewMyGroupActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0: // Fragment # 0 - This will show FirstFragment
-                    return DetailsGroupFragment.newInstance(0);
+                    return DetailsGroupFragment.newInstance(0, group);
                 case 1: // Fragment # 0 - This will show FirstFragment different title
-                    return NewsGroupFragment.newInstance(1);
+                    return NewsGroupFragment.newInstance(1, group);
                 default:
                     return null;
             }

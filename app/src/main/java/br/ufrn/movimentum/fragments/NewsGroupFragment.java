@@ -17,6 +17,7 @@ import br.ufrn.movimentum.InicialAllActivity;
 import br.ufrn.movimentum.R;
 import br.ufrn.movimentum.adapters.NewsAdapter;
 import br.ufrn.movimentum.model.GlobalNews;
+import br.ufrn.movimentum.model.Group;
 import br.ufrn.movimentum.model.News;
 
 
@@ -24,11 +25,14 @@ public class NewsGroupFragment extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
+    static Group group;
+
     /**
      * Returns a new instance of this fragment for the given section
      * number.
      */
-    public static NewsGroupFragment newInstance(int sectionNumber) {
+    public static NewsGroupFragment newInstance(int sectionNumber, Group group_) {
+        group = group_;
         NewsGroupFragment fragment = new NewsGroupFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);

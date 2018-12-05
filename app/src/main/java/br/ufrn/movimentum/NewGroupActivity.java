@@ -343,25 +343,6 @@ public class NewGroupActivity extends AppCompatActivity {
 
     private String saveToExternalStorage(Bitmap finalBitmap, String file_name) {
 
-////        String root = Environment.getExternalStorageDirectory().toString();
-////        File myDir = new File(root + "/saved_images");
-////        myDir.mkdirs();
-//
-//        File file = new File(Environment.getExternalStorageDirectory() + "/" + file_name);
-////        if (file.exists()) file.delete ();
-//        try {
-//            FileOutputStream out = new FileOutputStream(file);
-//            finalBitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
-//            out.flush();
-//            out.close();
-//            return Environment.getExternalStorageDirectory().toString();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return null;
-
-//
-//        File sdCardDirectory = Environment.getExternalStorageDirectory();
         String root = Environment.getExternalStorageDirectory().toString();
         File myDir = new File(root + "/images");
         if (!myDir.exists())
@@ -374,9 +355,6 @@ public class NewGroupActivity extends AppCompatActivity {
             finalBitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
             out.flush();
             out.close();
-//            sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.parse("file://" + Environment.getExternalStorageDirectory())));
-            // Parse the saved image path to uri
-//            Uri savedImageURI = Uri.parse(file.getAbsolutePath());
             return myDir.getPath();
         } catch (Exception e) {
             e.printStackTrace();

@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,13 +19,24 @@ import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.IOException;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.ufrn.movimentum.MapsActivity;
 import br.ufrn.movimentum.R;
+import br.ufrn.movimentum.model.Group;
+import br.ufrn.movimentum.model.User;
+import br.ufrn.movimentum.model.UserManager;
 import br.ufrn.movimentum.utils.RoundImage;
 
 
 public class DetailsGroupFragment extends Fragment {
+
+    static Group group;
 
 
     private ImageView iv_image_view_my_group;
@@ -38,9 +50,13 @@ public class DetailsGroupFragment extends Fragment {
     private Button bt_view_local_my_group;
 //    private TextView tv_desc_view_my_group;
 
+    private UserManager userManager;
+
     private static final String ARG_SECTION_NUMBER = "section_number";
 
-    public static DetailsGroupFragment newInstance(int sectionNumber) {
+    public static DetailsGroupFragment newInstance(int sectionNumber, Group group_) {
+        group = group_;
+
         DetailsGroupFragment fragment = new DetailsGroupFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
@@ -52,6 +68,8 @@ public class DetailsGroupFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        userManager = new UserManager(getContext());
+
     }
 
     @Override
@@ -60,7 +78,9 @@ public class DetailsGroupFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_details_group, container, false);
 
         initViewWidgets(rootView);
-        setValuesDefault(rootView);
+
+        setValues(group, rootView);
+//        setValuesDefault(rootView);
 
         bt_view_local_my_group.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +91,47 @@ public class DetailsGroupFragment extends Fragment {
         });
 
         return rootView;
+    }
+
+    private void setValues(Group group, View view) {
+
+        String desc = group.getGroupDescription();
+        WebView wv_view_my_group = view.findViewById(R.id.wv_view_my_group);
+        wv_view_my_group.setVerticalScrollBarEnabled(false);
+        String descHTML =  "<html><body style='text-align:justify;color:gray;'>  "+desc+" </body></html>";
+        wv_view_my_group.loadData(descHTML,"text/html","utf-8");
+        wv_view_my_group.setBackgroundColor(Color.TRANSPARENT);
+        wv_view_my_group.setLayerType(WebView.LAYER_TYPE_SOFTWARE, null);
+        //tv_descript_view_group.setText(desc);
+
+//        String pathName = "android.resource://"+getPackageName()+"/";
+//        Uri uri = Uri.parse(pathName+R.drawable.running_group);
+
+        List<User> usersInGroup = userManager.userInGroup(group);
+
+        Uri uri = Uri.parse(group.getGroupPicturePath());
+        iv_image_view_my_group.setImageURI(uri);
+        tv_title_view_my_group.setText(group.getGroupName());
+        tv_local_view_my_group.setText(group.getGroupLocal().getName());
+        tv_interval_my_group.setText(group.getGroupTime());
+        tv_days_my_group.setText(group.getGroupSchedule());
+        tv_capacity_view_my_group.setText(usersInGroup.size()+"/"+group.getCapacity());
+        tv_capacity_view_my_group.setTextColor(Color.rgb(80,170,80));
+        //tv_descript_view_group.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
+
+        for(User u : usersInGroup){
+
+//            getResources().getText(R.drawable.boy1);
+//            String s = "android.resource://"+getActivity().getPackageName()+"/drawable/boy1.png";
+//            Uri uri2 = Uri.parse(u.getGroupPicturePath());
+            grid_users_group.addView(createImageView(u.getGroupPicturePath()));
+//            int s = getContext().getResources().getIdentifier("boy1", "drawable", getActivity().getPackageName());
+//            Toast.makeText()t(getContext(), s,Toast.LENGTH_SHORT);
+//            Snackbar.make(view, s, Snackbar.LENGTH_LONG)
+//                            .setAction("Action", null).show();
+        }
+
+
     }
 
 
@@ -139,6 +200,32 @@ public class DetailsGroupFragment extends Fragment {
         Bitmap bm = BitmapFactory.decodeResource(getResources(),  resId);
         roundedImage = new RoundImage(bm);
         imageView1.setImageDrawable(roundedImage);
+
+        imageView1.setLayoutParams(lp);
+        return imageView1;
+    }
+
+    private ImageView createImageView(String path){
+        GridLayout.LayoutParams lp = new GridLayout.LayoutParams();
+        lp.setMargins(15,15,15,15);
+        lp.height = 120;
+        lp.width = 120;
+        ImageView imageView1 = new ImageView(getActivity());
+        RoundImage roundedImage;
+        Bitmap bm = null;
+
+
+            bm = BitmapFactory.decodeFile(path);
+//            bm = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), uri);
+        Log.i("Details", path);
+//        Toast.makeText(getActivity().getBaseContext(),path,
+//                Toast.LENGTH_SHORT).show();
+
+//        Bitmap bm = BitmapFactory.decodeFile(path);
+
+        roundedImage = new RoundImage(bm);
+        imageView1.setImageDrawable(roundedImage);
+
         imageView1.setLayoutParams(lp);
         return imageView1;
     }
