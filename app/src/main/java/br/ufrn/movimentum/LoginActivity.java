@@ -18,10 +18,8 @@ import android.widget.TextView;
 
 import br.ufrn.movimentum.model.UserManager;
 
-/**
- * A login screen that offers login via email/password.
- */
-public class LoginActivity extends AppCompatActivity /*implements LoaderCallbacks<Cursor>*/ {
+
+public class LoginActivity extends AppCompatActivity {
 
 
     private EditText mEmailView;
@@ -34,44 +32,29 @@ public class LoginActivity extends AppCompatActivity /*implements LoaderCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
         userManager = new UserManager(getApplicationContext());
 
+        mEmailView = findViewById(R.id.email);
 
-        // Set up the login form.
-        mEmailView = (EditText) findViewById(R.id.email);
-//        populateAutoComplete();
-
-        mPasswordView = (EditText) findViewById(R.id.password);
+        mPasswordView = findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login || id == EditorInfo.IME_NULL) {
-//                    attemptLogin();
-                    return true;
-                }
-                return false;
+                return id == R.id.login || id == EditorInfo.IME_NULL;
             }
         });
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+        Button mEmailSignInButton = findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-//                attemptLogin();
                 String email = mEmailView.getText().toString();
                 String senha = mPasswordView.getText().toString();
                 boolean sucess = userManager.requestUser(getApplicationContext(), email,senha );
                 if(sucess){
-//                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//                    startActivity(intent);
-//                    finish();
-
-
-                    Intent intent = new Intent(getApplicationContext(), InicialAllActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                     startActivity(intent);
                     finish();
-
                 }else{
                     alert("Email ou senha estão incorretos, tente novamente!");
                 }
@@ -87,16 +70,14 @@ public class LoginActivity extends AppCompatActivity /*implements LoaderCallback
             }
         });
 
-        TextView bt_cadastrar = (TextView) findViewById(R.id.bt_cadastrar);
+        TextView bt_cadastrar = findViewById(R.id.bt_cadastrar);
         bt_cadastrar.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), CadastrarActivity.class);
                 startActivity(intent);
-//                finish();
             }
         });
-
     }
 
     void alert(String message){

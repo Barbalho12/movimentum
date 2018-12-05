@@ -13,6 +13,7 @@ public class User implements Serializable {
     private String senha;
     private String groupPicturePath;
     private List<Group> groups;
+    private List<Group> groups_soliciteds;
 
 
     public User(String nome, String email, String senha) {
@@ -20,6 +21,7 @@ public class User implements Serializable {
         this.email = email;
         this.senha = senha;
         this.groups = new ArrayList<>();
+        this.groups_soliciteds = new ArrayList<>();
         this.groupPicturePath = "R.drawable.boy1";
     }
 
@@ -29,6 +31,7 @@ public class User implements Serializable {
         this.senha = senha;
         this.role = role;
         this.groups = new ArrayList<>();
+        this.groups_soliciteds = new ArrayList<>();
 //        this.groupPicturePath = "R.drawable.boy1";
     }
 
@@ -39,6 +42,7 @@ public class User implements Serializable {
         this.role = role;
         this.groups = new ArrayList<>();
         this.groupPicturePath = groupPicturePath;
+        this.groups_soliciteds = new ArrayList<>();
     }
 
 
@@ -113,5 +117,13 @@ public class User implements Serializable {
 
     public void setGroupPicturePath(String groupPicturePath) {
         this.groupPicturePath = groupPicturePath;
+    }
+
+    public List<Group> getGroups_soliciteds() {
+        return groups_soliciteds;
+    }
+
+    public void setGroups_soliciteds(List<Group> groups_soliciteds) {
+        this.groups_soliciteds = groups_soliciteds;
     }
 }

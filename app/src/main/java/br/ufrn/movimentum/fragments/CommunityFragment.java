@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +14,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.ufrn.movimentum.InicialAllActivity;
+import br.ufrn.movimentum.HomeActivity;
 import br.ufrn.movimentum.R;
 import br.ufrn.movimentum.SearchGroupActivity;
 import br.ufrn.movimentum.ViewGroupActivity;
@@ -60,7 +59,7 @@ public class CommunityFragment extends Fragment {
         String pathName = "android.resource://"+getActivity().getPackageName()+"/";
 
 
-        List<Group> groups = InicialAllActivity.userManager.getGroups();
+        List<Group> groups = HomeActivity.userManager.getGroups();
         list_itens.addAll(groups);
 
 //        list_itens.add(new Group(1, "Corrida Livre", "Em torno da UFRN", "qui,sex", "18h00-19h00", pathName+R.drawable.running_group));
@@ -82,11 +81,18 @@ public class CommunityFragment extends Fragment {
 //                Toast.makeText(getApplicationContext(),
 //                        "Clicou no item " + position, Toast.LENGTH_LONG).show();
 
-                InicialAllActivity.userManager.setActiveGroup(list_itens.get(position));
-                Intent intent = new Intent(getActivity(), ViewGroupActivity.class);
-                intent.putExtra("group",list_itens.get(position));
+                HomeActivity.userManager.setActiveGroup(list_itens.get(position));
 
-                startActivity(intent);
+
+                if(HomeActivity.userManager.getActiveUser().getGroups().contains(list_itens.get(position))){
+                    Intent intent = new Intent(getActivity(), ViewMyGroupActivity.class);
+                    intent.putExtra("group",list_itens.get(position));
+                    startActivity(intent);
+                }else{
+                    Intent intent = new Intent(getActivity(), ViewGroupActivity.class);
+                    intent.putExtra("group",list_itens.get(position));
+                    startActivity(intent);
+                }
             }
         });
 

@@ -1,32 +1,18 @@
 package br.ufrn.movimentum;
 
-import android.Manifest;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Environment;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.ActivityCompat;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,12 +21,6 @@ import br.ufrn.movimentum.model.UserManager;
 import br.ufrn.movimentum.utils.ImageFIle;
 
 public class CadastrarActivity extends AppCompatActivity {
-
-//    private static final int REQUEST_EXTERNAL_STORAGE = 1;
-//    private static String[] PERMISSIONS_STORAGE = {
-//            Manifest.permission.READ_EXTERNAL_STORAGE,
-//            Manifest.permission.WRITE_EXTERNAL_STORAGE
-//    };
 
     UserManager userManager;
 
@@ -59,7 +39,6 @@ public class CadastrarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastrar);
         ImageFIle.verifyStoragePermissions(this);
-
 
         tv_cad_nome = (TextView) findViewById(R.id.tv_cad_nome);
         tv_cad_email = (TextView) findViewById(R.id.tv_cad_email);
@@ -83,21 +62,21 @@ public class CadastrarActivity extends AppCompatActivity {
 
                     boolean sucess = userManager.addUser(new User(nome,email,senha,role), getApplicationContext());
                     if(sucess){
-                        String path = ImageFIle.trySaveImage(nome+userManager.getUsers().size(), getDrawable(R.drawable.boy));
-                                Log.i("Details", path);
-                        userManager.getActiveUser().setGroupPicturePath(path);
-                        userManager.persiste(getApplicationContext());
-                        alert("Usuário cadastrado com sucesso!");
-//                        Snackbar.make(v, "Usuário cadastrado com sucesso", Snackbar.LENGTH_LONG)
-//                                .setAction("Action", null).show();
-                        Intent intent = new Intent(getApplicationContext(), InicialAllActivity.class);
-                        startActivity(intent);
-                        finish();
+                        sucess = userManager.requestUser(getApplicationContext(), email,senha );
+                        if(sucess) {
+                            String path = ImageFIle.trySaveImage(nome + userManager.getUsers().size(), getDrawable(R.drawable.boy));
+                            Log.i("Details", path);
+                            userManager.getActiveUser().setGroupPicturePath(path);
+                            userManager.persiste(getApplicationContext());
+                            alert("Usuário cadastrado com sucesso!");
+                            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
                     }else{
                         alert("Usuário Já existe");
                     }
                 }
-
             }
         });
 
@@ -105,20 +84,6 @@ public class CadastrarActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
-            }
-        });
-
-
-        // Spinner click listener
-        sp_cad_role.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
 
@@ -137,9 +102,7 @@ public class CadastrarActivity extends AppCompatActivity {
 
         // attaching data adapter to spinner
         sp_cad_role.setAdapter(dataAdapter);
-
     }
-
 
     void alert(String message){
         AlertDialog alertDialog = new AlertDialog.Builder(CadastrarActivity.this).create();
@@ -153,62 +116,4 @@ public class CadastrarActivity extends AppCompatActivity {
                 });
         alertDialog.show();
     }
-
-//    private String trySaveImage(String name) {
-//
-//        Drawable d = getDrawable(R.drawable.boy);
-//        Bitmap write_b = ((BitmapDrawable) d).getBitmap();
-//
-//        String img_file_name = "image.png";
-//        if(name != null || name.equals(""))
-//            img_file_name = name.replace(" ","_")+".png";
-//        String dir = saveToExternalStorage(write_b, img_file_name);
-//        return dir+"/"+img_file_name;
-//    }
-
-//    public static void verifyStoragePermissions(Activity activity) {
-//        int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-//        if (permission != PackageManager.PERMISSION_GRANTED) {
-//            ActivityCompat.requestPermissions(
-//                    activity,
-//                    PERMISSIONS_STORAGE,
-//                    REQUEST_EXTERNAL_STORAGE
-//            );
-//        }
-//    }
-
-//    private String saveToExternalStorage(Bitmap finalBitmap, String file_name) {
-//
-//        String root = Environment.getExternalStorageDirectory().toString();
-//        File myDir = new File(root + "/images");
-//        if (!myDir.exists())
-//            myDir.mkdirs();
-//        File file = new File (myDir, file_name);
-//        if (file.exists()) file.delete ();
-//        OutputStream out = null;
-//        try {
-//            out = new FileOutputStream(file);
-//            finalBitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
-//            out.flush();
-//            alert("Sucesso!");
-//            out.close();
-//            return myDir.getPath();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }finally {
-//            try {
-//                out.close();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        return null;
-//    }
-
-//    @Override
-//    public void onBackPressed() {
-//        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-//        startActivity(intent);
-//        finish();
-//    }
 }

@@ -3,6 +3,8 @@ package br.ufrn.movimentum;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
@@ -21,6 +23,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import br.ufrn.movimentum.fragments.CommunityFragment;
@@ -30,74 +33,58 @@ import br.ufrn.movimentum.model.UserManager;
 
 import static android.content.ContentValues.TAG;
 
-public class InicialAllActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-
-    private SectionsPagerAdapter mSectionsPagerAdapter;
-    private ViewPager mViewPager;
     public static UserManager userManager;
-
-    private NavigationView navigationView;
 
     TextView tv_user_name_nav;
     TextView tv_user_role_nav;
 
+    ImageView iv_user_picture;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all);
+        setContentView(R.layout.activity_home);
 
         userManager = new UserManager(getApplicationContext());
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
 
         View header = navigationView.getHeaderView(0);
-        tv_user_name_nav = (TextView) header.findViewById(R.id.tv_user_name_nav);
-        tv_user_role_nav= (TextView) header.findViewById(R.id.tv_user_role_nav);
-
-//        if (userManager.getActiveUser() != null) {
-//            navigationView.getMenu().getItem(0).setTitle("Exercícios Realizados: " + userManager.getActiveUser().getNumberExercRealizados());
-//            navigationView.getMenu().getItem(1).setTitle("Exercícios vizualizados: " + userManager.getActiveUser().getNumberExercVistos());
-//            navigationView.getMenu().getItem(2).setTitle("Kanjis Vistos: " + userManager.getActiveUser().getKanjis_vistos());
-//        } else {
-//            navigationView.getMenu().getItem(0).setTitle("Exercícios Realizados: x");
-//            navigationView.getMenu().getItem(1).setTitle("Exercícios vizualizados: x");
-//            navigationView.getMenu().getItem(2).setTitle("Kanjis Vistos: x");
-//        }
-
+        tv_user_name_nav = header.findViewById(R.id.tv_user_name_nav);
+        tv_user_role_nav = header.findViewById(R.id.tv_user_role_nav);
+        iv_user_picture = header.findViewById(R.id.iv_user_picture);
 
         if (userManager.getActiveUser() != null && tv_user_name_nav != null) {
             Log.v(TAG, userManager.getActiveUser().getNome());
 
             tv_user_name_nav.setText(userManager.getActiveUser().getNome());
+            iv_user_picture.setImageURI(Uri.parse(userManager.getActiveUser().getGroupPicturePath()));
         }
 
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        SectionsPagerAdapter mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
 //        // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
+        ViewPager mViewPager = findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-        String role = "";
-
         if (userManager.getActiveUser() != null) {
-//            role = String.valueOf(userManager.getActiveUser().getRole());
             tv_user_role_nav.setText(userManager.getActiveUser().getRole());
-//            tv_user_role
         }
     }
 
@@ -110,7 +97,7 @@ public class InicialAllActivity extends AppCompatActivity implements NavigationV
     }
 
     void alert() {
-        AlertDialog alertDialog = new AlertDialog.Builder(InicialAllActivity.this).create();
+        AlertDialog alertDialog = new AlertDialog.Builder(HomeActivity.this).create();
         alertDialog.setTitle("Alerta");
         alertDialog.setMessage("Confirme para sair");
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Sair",
@@ -145,15 +132,10 @@ public class InicialAllActivity extends AppCompatActivity implements NavigationV
         return super.onOptionsItemSelected(item);
     }
 
-
-    /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
-    public class SectionsPagerAdapter extends FragmentPagerAdapter {
+    private class SectionsPagerAdapter extends FragmentPagerAdapter {
 
 
-        public SectionsPagerAdapter(FragmentManager fm) {
+        private SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
@@ -193,7 +175,7 @@ public class InicialAllActivity extends AppCompatActivity implements NavigationV
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -203,7 +185,7 @@ public class InicialAllActivity extends AppCompatActivity implements NavigationV
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
@@ -213,18 +195,18 @@ public class InicialAllActivity extends AppCompatActivity implements NavigationV
 
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
-            sendIntent.putExtra(Intent.EXTRA_TEXT, "Estou ficando cada vez melhor! Já tenho 10 pontos e sou iniciante no Kaligraphy! :)");
+            sendIntent.putExtra(Intent.EXTRA_TEXT, "Conheça o Movimentum, o app que possibilita você explorar diferentes esportes na UFRN! :)");
             sendIntent.setType("text/plain");
             startActivity(sendIntent);
 
         } else if (id == R.id.nav_sair) {
             userManager.setInActiveUser(getApplicationContext());
-            Intent intent = new Intent(getApplicationContext(), StartActivity.class);
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(intent);
             finish();
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

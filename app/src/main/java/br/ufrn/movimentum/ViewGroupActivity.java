@@ -49,11 +49,26 @@ public class ViewGroupActivity extends AppCompatActivity {
 //        setValuesDefault();
         setValues(group);
 
+        if(userManager.getActiveUser().getGroups_soliciteds().contains(group)){
+            bt_request_participate_group.setBackgroundColor(Color.rgb(100,100,100));
+            bt_request_participate_group.setText("Aguardando solicitação");
+//            bt_request_participate_group.set
+        }
+
+
         bt_request_participate_group.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Não implementado", Snackbar.LENGTH_LONG)
+                if(userManager.getActiveUser().getGroups_soliciteds().contains(group)){
+                                    Snackbar.make(view, "Você já solicitou participar desse grupo, a aprovação pode demorar um pouco..", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
+                }else{
+                    userManager.getActiveUser().getGroups_soliciteds().add(group);
+                    userManager.persiste(getApplicationContext());
+                    bt_request_participate_group.setBackgroundColor(Color.rgb(100,100,100));
+                    bt_request_participate_group.setText("Aguardando solicitação");
+                }
             }
         });
 

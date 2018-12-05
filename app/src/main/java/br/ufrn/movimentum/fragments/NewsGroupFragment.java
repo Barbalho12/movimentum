@@ -10,13 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import br.ufrn.movimentum.InicialAllActivity;
+import br.ufrn.movimentum.HomeActivity;
 import br.ufrn.movimentum.R;
 import br.ufrn.movimentum.adapters.NewsAdapter;
-import br.ufrn.movimentum.model.GlobalNews;
 import br.ufrn.movimentum.model.Group;
 import br.ufrn.movimentum.model.News;
 
@@ -53,7 +51,7 @@ public class NewsGroupFragment extends Fragment {
 
         ListView listview = (ListView) rootView.findViewById(R.id.listview_news_group);
 
-        List<News> news = InicialAllActivity.userManager.getActiveGroup().getListNews();
+        List<News> news = HomeActivity.userManager.getActiveGroup().getListNews();
 //        List<News> list_itens = new ArrayList<>();
 //        list_itens.add(new ItemNews(1, "Cancelamento do treino de hoje", "28/10/2018", "16h40"));
 

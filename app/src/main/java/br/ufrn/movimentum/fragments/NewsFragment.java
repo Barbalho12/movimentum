@@ -15,14 +15,11 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.ufrn.movimentum.InicialAllActivity;
+import br.ufrn.movimentum.HomeActivity;
 import br.ufrn.movimentum.R;
 import br.ufrn.movimentum.SearchNewsActivity;
 import br.ufrn.movimentum.adapters.GlobalNewsAdapter;
-import br.ufrn.movimentum.adapters.GroupAdapter;
-import br.ufrn.movimentum.adapters.NewsAdapter;
 import br.ufrn.movimentum.model.GlobalNews;
-import br.ufrn.movimentum.model.Group;
 import br.ufrn.movimentum.model.News;
 
 
@@ -49,7 +46,7 @@ public class NewsFragment extends Fragment {
         List<GlobalNews> list_itens = new ArrayList<>();
         String pathName = "android.resource://"+getActivity().getPackageName()+"/";
 
-        List<GlobalNews> globalNews = InicialAllActivity.userManager.getGlobalNews();
+        List<GlobalNews> globalNews = HomeActivity.userManager.getGlobalNews();
         list_itens.addAll(globalNews);
 //        list_itens.add
 //        list_itens.add(new Group(1, "Maratona Meia do Sol", "Arena das Dunas (Largada)", "dom", "08h00", pathName+R.drawable.news_maratona));

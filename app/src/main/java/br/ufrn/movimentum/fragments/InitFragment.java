@@ -3,7 +3,6 @@ package br.ufrn.movimentum.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +13,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.ufrn.movimentum.InicialAllActivity;
+import br.ufrn.movimentum.HomeActivity;
 import br.ufrn.movimentum.NewGroupActivity;
 import br.ufrn.movimentum.R;
 import br.ufrn.movimentum.ViewMyGroupActivity;
@@ -57,7 +56,7 @@ public class InitFragment extends Fragment {
         list_itens = new ArrayList<>();
         String pathName = "android.resource://"+getActivity().getPackageName()+"/";
 
-        User user = InicialAllActivity.userManager.getActiveUser();
+        User user = HomeActivity.userManager.getActiveUser();
         List<Group> groups = user.getGroups();
         list_itens.addAll(groups);
 //        list_itens.add(new Group(1, "Corrida Livre", "Em torno da UFRN", "qui,sex", "18h00-19h00", pathName+R.drawable.running_group));
@@ -73,8 +72,8 @@ public class InitFragment extends Fragment {
 //                if(position==0){
 //
 //                }
-//                    InicialAllActivity.userManager.setActiveGroup((Group)parent.getItemAtPosition(position));
-                    InicialAllActivity.userManager.setActiveGroup((Group)parent.getItemAtPosition(position));
+//                    HomeActivity.userManager.setActiveGroup((Group)parent.getItemAtPosition(position));
+                    HomeActivity.userManager.setActiveGroup((Group)parent.getItemAtPosition(position));
                     Intent intent = new Intent(getActivity(), ViewMyGroupActivity.class);
                     intent.putExtra("group",list_itens.get(position));
                     startActivity(intent);

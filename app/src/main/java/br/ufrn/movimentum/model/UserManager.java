@@ -59,7 +59,7 @@ public class UserManager implements Serializable {
         if(!users.contains(user)){
 
             users.add(user);
-            activeUser = user;
+//            activeUser = user;
             Log.v(TAG, user.getNome()+" Salvo ");
             boolean sucess = save(context, fileName, this);
             return sucess;
