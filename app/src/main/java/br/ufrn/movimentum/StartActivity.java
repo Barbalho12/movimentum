@@ -28,7 +28,7 @@ public class StartActivity extends AppCompatActivity {
     }
 
     void verifySession() {
-        userManager = new UserManager(getApplicationContext());
+
         if (userManager.getActiveUser() != null) {
             Intent intent = new Intent(getApplicationContext(), InicialAllActivity.class);
             startActivity(intent);
@@ -43,15 +43,15 @@ public class StartActivity extends AppCompatActivity {
 
             List<Group> list_itens = new ArrayList<>();
 
-            String pathName = "android.resource://"+getPackageName()+"/";
-            list_itens.add(new Group(1, "Corrida Livre", "Em torno da UFRN", new GroupLocal("Em torno da UFRN"),20,"qui,sex", "18h00-19h00", pathName+R.drawable.running_group));
-            list_itens.add(new Group(2, "Natação 2", "UFRN - Piscina 2",new GroupLocal("Em torno da UFRN"),20, "seg,qua", "08h00-09h00", pathName+R.drawable.swimming_group));
-            list_itens.add(new Group(3, "Time de Atletismo", "UFRN - Pista de Atletismo",new GroupLocal("Em torno da UFRN"),20, "seg,qua,sex", "17h00-18h30", pathName+R.drawable.atletism_group));
-            list_itens.add(new Group(6, "Futsal C&T", "UFRN - Ginásio 2",new GroupLocal("Em torno da UFRN"),20, "ter", "08h00-10h00", pathName+R.drawable.group_futsal_cet));
-            list_itens.add(new Group(4, "Hidroginástica 3° Idade", "UFRN - Piscina 2",new GroupLocal("Em torno da UFRN"),20, "seg,qua", "16h00-17h00", pathName+R.drawable.group_hidro));
-            list_itens.add(new Group(5, "Time Futsal UFRN", "UFRN - Ginásio 1",new GroupLocal("Em torno da UFRN"),20, "seg,qua,sex", "18h00-19h30", pathName+R.drawable.group_futsal));
-            list_itens.add(new Group(7, "Treino Karate", "UFRN - Ginásio 1",new GroupLocal("Em torno da UFRN"),20, "qua,sex", "20h00-21h00", pathName+R.drawable.group_karate));
-            list_itens.add(new Group(8, "Preparatório Maratona", "Em torno da UFRN",new GroupLocal("Em torno da UFRN"),20, "seg,qua,sex", "07h00-08h30", pathName+R.drawable.group_maratona));
+            String pathName = "android.resource://" + getPackageName() + "/";
+            list_itens.add(new Group(1, "Corrida Livre", "Em torno da UFRN", new GroupLocal("Em torno da UFRN"), 20, "qui,sex", "18h00-19h00", pathName + R.drawable.running_group));
+            list_itens.add(new Group(2, "Natação 2", "UFRN - Piscina 2", new GroupLocal("Em torno da UFRN"), 20, "seg,qua", "08h00-09h00", pathName + R.drawable.swimming_group));
+            list_itens.add(new Group(3, "Time de Atletismo", "UFRN - Pista de Atletismo", new GroupLocal("Em torno da UFRN"), 20, "seg,qua,sex", "17h00-18h30", pathName + R.drawable.atletism_group));
+            list_itens.add(new Group(6, "Futsal C&T", "UFRN - Ginásio 2", new GroupLocal("Em torno da UFRN"), 20, "ter", "08h00-10h00", pathName + R.drawable.group_futsal_cet));
+            list_itens.add(new Group(4, "Hidroginástica 3° Idade", "UFRN - Piscina 2", new GroupLocal("Em torno da UFRN"), 20, "seg,qua", "16h00-17h00", pathName + R.drawable.group_hidro));
+            list_itens.add(new Group(5, "Time Futsal UFRN", "UFRN - Ginásio 1", new GroupLocal("Em torno da UFRN"), 20, "seg,qua,sex", "18h00-19h30", pathName + R.drawable.group_futsal));
+            list_itens.add(new Group(7, "Treino Karate", "UFRN - Ginásio 1", new GroupLocal("Em torno da UFRN"), 20, "qua,sex", "20h00-21h00", pathName + R.drawable.group_karate));
+            list_itens.add(new Group(8, "Preparatório Maratona", "Em torno da UFRN", new GroupLocal("Em torno da UFRN"), 20, "seg,qua,sex", "07h00-08h30", pathName + R.drawable.group_maratona));
 
             user1.addGroup(list_itens.get(0));
             user1.addGroup(list_itens.get(1));
@@ -85,21 +85,30 @@ public class StartActivity extends AppCompatActivity {
     public void verifyStoragePermissions(Activity activity) {
         int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         if (permission != PackageManager.PERMISSION_GRANTED) {
-//            Intent intent = new Intent(StartActivity.this, Class.class);
-//            startActivity(intent);
-//            finish();
             ActivityCompat.requestPermissions(
                     this,
                     ImageFIle.PERMISSIONS_STORAGE,
                     ImageFIle.REQUEST_EXTERNAL_STORAGE
             );
+        } else {
+
+            if (userManager.getActiveUser() != null) {
+                Intent intent = new Intent(getApplicationContext(), InicialAllActivity.class);
+                startActivity(intent);
+                finish();
+            } else {
+                Intent intent = new Intent(StartActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+
         }
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(grantResults[0]== PackageManager.PERMISSION_GRANTED){
+        if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             verifySession();
         }
     }
@@ -118,8 +127,8 @@ public class StartActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        userManager = new UserManager(getApplicationContext());
         verifyStoragePermissions(this);
-
         super.onCreate(savedInstanceState);
 
     }
